@@ -43,7 +43,7 @@ class Fixed extends MY_Controller
             
             if($sign_tech > 0){
 
-            $b .='<img src="http://localhost/Gastron/asset_signature/signature/'.$lf->id_technician.'.png">';
+            $b .='<img src="http://cloone.my/demo/Gastron/asset_signature/signature/'.$lf->id_technician.'.png">';
             
             }else{
                 

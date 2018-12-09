@@ -168,6 +168,21 @@ class Gastron_technician extends CI_Model
 	}
     
     
+     function sign_update($id_technician)
+	{
+         $data = array(
+				
+            
+             "sign_technician"=>$this->sign_technician,
+             "updated"=>'now()',
+					
+     	);
+        
+		$q = $this->db->where('id_technician',$id_technician)->update($this->table,$data);
+		
+		return $q;
+	}
+    
 	}
 
 ?>

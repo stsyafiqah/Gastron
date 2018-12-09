@@ -109,6 +109,8 @@ $route['self_update']           = 'technician/self_update';
 $route['change_password']           = 'technician/change_password';
 $route['password']           = 'technician/change_passwords';
 $route['delete_technician']     = 'technician/delete_technician';
+$route['change_signature']     = 'technician/signature_update';
+$route['sign_update']     = 'technician/sign_update';
 
 /*=====================================================================
 

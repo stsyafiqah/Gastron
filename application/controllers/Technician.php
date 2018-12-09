@@ -217,4 +217,77 @@ window.location.href='change_password';
 
         
     }
+    
+    public function sign_update()
+    {
+        $data = array();
+        $id_technician = $this->session->id_technician;
+        //$id_technician = $this->input->post('id_technician');
+        $signature_image = $this->input->post('signature_image');
+        $this->Gastron_technician->sign_technician =  ''.$id_technician.'.png';
+        
+        $sign_value = $_REQUEST['signature_image'];
+
+        if ( !empty($sign_value) )
+        {
+        $signature_image_temp = explode(",", $sign_value);
+        if ( !empty($signature_image_temp[1]) )
+        {
+        /*if (!file_exists(storage_path('app/public').'/signature/'.$sales_id))
+        {
+        mkdir(storage_path('app/public').'/signature/'.$sales_id, 0777, true);
+        }*/
+
+        $signature_image = base64_decode($signature_image_temp[1]);
+        //$filename = 'signature_purchaser_'.$key;
+        //Location to where you want to created sign image
+             $result = array();
+        //Location to where you want to created sign image
+        $filelocation = './asset_signature/signature/'.$id_technician.'.png';
+        //$filelocation = 'http://localhost/Gastron/asset_signature/signature/'.$id_technician.'.png';
+        if ( !file_exists($filelocation) )
+        {
+        //generate image file to selected location
+        file_put_contents($filelocation, $signature_image);
+        }
+        else
+        {
+        //rename file first for those existing image in selected location
+        //$filelocation_rename = 'http://localhost://Gastron/asset_signature/signature/'.$id_technician.'_'.date("YmdHis").'.png';
+        $filelocation_rename = './asset_signature/signature/'.$id_technician.'.png';
+        if ( rename($filelocation, $filelocation_rename) )
+        {
+        //successful rename
+        }
+        else
+        {
+        //unsuccessful rename
+        }
+        //generate image file to selected location
+        file_put_contents($filelocation, $signature_image);
+        }
+        }
+        }
+        
+         
+        
+		$q = $this->Gastron_technician->sign_update($id_technician);
+        $data['profile'] = $this->Gastron_technician->select_id($id_technician);
+        $this->data = $data;
+		$this->middle = 'profile';
+    	$this->layout();    
+        
+    }
+    
+     public function signature_update()
+    {
+        $data = array();
+        $id_technician = $this->session->id_technician;
+    
+        $data['profile'] = $this->Gastron_technician->select_id($id_technician);
+        $this->data = $data;
+		$this->middle = 'change_signature';
+    	$this->layout();    
+        
+    }
 }

@@ -13,7 +13,7 @@
   width: 100%;
   height: 100%;
   max-width: 700px;
-  max-height: 460px;
+  max-height: 300px;
   border: 1px solid #e8e8e8;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.08) inset;
@@ -120,10 +120,10 @@ foreach($profile as $p){
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Profile</h3>
+                        <h3 class="text-themecolor m-b-0 m-t-0">Change Signature</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Gastron</a></li>
-                            <li class="breadcrumb-item active">Profile</li>
+                            <li class="breadcrumb-item active">Change Signature</li>
                         </ol>
                     </div>
                    
@@ -159,29 +159,17 @@ foreach($profile as $p){
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-block">
-                                 <form id="wizard-clickable" class="frm_wizard frm_wizard_check" method="POST" action="<?=site_url('self_update?id='.$id_technician)?>" enctype="multipart/form-data"  novalidate>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Full Name</label>
-                                        <div class="col-md-12">
-                                            <input type="text" value="<?php echo $name_technician ?>" name="name_technician" class="form-control form-control-line">
+                                 <form id="wizard-clickable" class="frm_wizard frm_wizard_check" method="POST" action="<?=site_url('sign_update?id='.$id_technician)?>" enctype="multipart/form-data"  novalidate>
+                                     <div class="form-group">
+                                        <div class="col-sm-12">
+                                            
+                                             <img src="http://cloone.my/demo/Gastron/asset_signature/signature/<?php echo $id_technician ?>.png">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="example-email" class="col-md-12">Email</label>
-                                        <div class="col-md-12">
-                                            <input type="email" value="<?php echo $email_technician ?>" name="email_technician"  class="form-control form-control-line" name="example-email" id="example-email">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-12">Phone No</label>
-                                        <div class="col-md-12">
-                                            <input type="text" value="<?php echo $phone_technician ?>" name="phone_technician"  class="form-control form-control-line">
-                                        </div>
-                                    </div>
+                                   
                                     <div class="form-group">
                                         <label class="col-md-12">Signature</label>
-                                        <?php if ($p->sign_technician == ''){ ?>
+                                       
                                         <div class="col-md-12">
                                            <div id="signature-pad" class="signature-pad">
                                         <div class="signature-pad--body">
@@ -207,16 +195,14 @@ foreach($profile as $p){
                                         </div>
                                       </div>
                                         </div>
-                                        <?php }else{ ?>
-                                       <img src="http://cloone.my/demo/Gastron/asset_signature/signature/<?php echo $id_technician ?>.png">
-                                        <?php } ?>
+                                        
                                     </div>
                                      
                                    <input type="hidden" name="id_technician" value="<?php echo $id_technician ?>">
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             
-                                            <button type="button" class="btn btn-success button-submit">Update Profile</button>
+                                            <button type="button" class="btn btn-success button-submit">Update Signature</button>
                                         </div>
                                     </div>
                                 </form>

@@ -55,6 +55,7 @@ dark Logo text
                 <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
                     <li><a href="<?=site_url('profile')?>" class="nav-link text-muted waves-effect waves-dark"> Profile</a></li>
                     <li><a href="<?=site_url('change_password')?>" class="nav-link text-muted waves-effect waves-dark"> Change Password</a></li>
+                     <li><a href="<?=site_url('change_signature')?>" class="nav-link text-muted waves-effect waves-dark"> Change Signature</a></li>
                     <div class="dropdown-divider"></div>
                     <li><a href="<?=site_url('logout')?>" class="nav-link text-muted waves-effect waves-dark"> Logout</a></li>
                 </ul>
