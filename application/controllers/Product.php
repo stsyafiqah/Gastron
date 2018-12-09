@@ -22,18 +22,18 @@ class Product extends MY_Controller {
     public function __construct(){
         
         parent ::__construct();
-        $this->load->model('gastron_client');
-        $this->load->model('gastron_technician');
-        $this->load->model('gastron_warranty');
-        $this->load->model('gastron_product');
-        $this->load->model('gastron_model');
+        $this->load->model('Gastron_client');
+        $this->load->model('Gastron_technician');
+        $this->load->model('Gastron_warranty');
+        $this->load->model('Gastron_product');
+        $this->load->model('Gastron_model');
     }
     
 	public function index()
 	{
         $data = array();
 		
-        $data['all_product'] = $this->gastron_product->listing_all();
+        $data['all_product'] = $this->Gastron_product->listing_all();
     
         $this->data = $data;
 		$this->middle = 'product';
@@ -43,12 +43,12 @@ class Product extends MY_Controller {
      public function insert_product()
     {
     
-        $this->gastron_product->code_product = $this->input->post('code_product');
-        $this->gastron_product->desc_product = $this->input->post('desc_product');
+        $this->Gastron_product->code_product = $this->input->post('code_product');
+        $this->Gastron_product->desc_product = $this->input->post('desc_product');
        
       
       
-		$q = $this->gastron_product->insert_product();
+		$q = $this->Gastron_product->insert_product();
 
         redirect('product');
 
@@ -58,14 +58,27 @@ class Product extends MY_Controller {
      public function update_product()
     {
        $id_product = $this->input->post('id_product');
-        $this->gastron_product->code_product = $this->input->post('code_product');
-        $this->gastron_product->desc_product = $this->input->post('desc_product');
+        $this->Gastron_product->code_product = $this->input->post('code_product');
+        $this->Gastron_product->desc_product = $this->input->post('desc_product');
        
-		$q = $this->gastron_product->update_product($id_product);
+		$q = $this->Gastron_product->update_product($id_product);
 
         redirect('product');
 
         
     }
+    
+         public function delete_product()
+    {
+       $id_product = $this->input->post('id_product');
+         
+		$q = $this->Gastron_product->delete_product($id_product);
+        $r = $this->Gastron_model->delete_product($id_product);     
+
+        redirect('product');
+
+        
+    }
+
     
 }

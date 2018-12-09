@@ -5,7 +5,7 @@
 }*/
 
  $id = $this->input->get('id');
-        $listing_domestic = $this->gastron_domestic->listing($id);
+        $listing_domestic = $this->Gastron_domestic->listing($id);
         foreach($listing_domestic as $d)
         {
         }

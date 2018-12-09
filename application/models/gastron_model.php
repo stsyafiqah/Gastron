@@ -1,5 +1,5 @@
 <?php
-class gastron_model extends CI_Model 
+class Gastron_model extends CI_Model 
 {
 	public $table = 'gastron_model';
 	public $primary_key = 'id_modle';
@@ -85,6 +85,36 @@ class gastron_model extends CI_Model
 		$q = $db->get()->result();
 		return $q;
  
+	}
+    
+    function delete_product($id_product)
+	{
+         $data = array(
+				
+             "active"=>0,
+
+					
+     	);
+        
+		$q = $this->db->where_in('id_products',$id_product)->update($this->table,$data);
+		/*pre($q);
+        exit();*/
+		return $q;
+	}
+    
+    function delete_model($id_model)
+	{
+         $data = array(
+				
+             "active"=>0,
+
+					
+     	);
+        
+		$q = $this->db->where('id_model',$id_model)->update($this->table,$data);
+		/*pre($q);
+        exit();*/
+		return $q;
 	}
     
 }

@@ -6,11 +6,11 @@ class Start extends MY_Controller
 	public function __construct()
 	{
 		 parent ::__construct();
-        $this->load->model('gastron_client');
-        $this->load->model('gastron_technician');
-        $this->load->model('gastron_warranty');
-        $this->load->model('gastron_product');
-        $this->load->model('gastron_model');
+        $this->load->model('Gastron_client');
+        $this->load->model('Gastron_technician');
+        $this->load->model('Gastron_warranty');
+        $this->load->model('Gastron_product');
+        $this->load->model('Gastron_model');
     
 	}
 
@@ -54,7 +54,7 @@ class Start extends MY_Controller
 
 		if(!empty($email) && !empty($password))
 		{
-			$login = $this->gastron_technician->login($email,$password);
+			$login = $this->Gastron_technician->login($email,$password);
            /* print_r($login);
             die();*/
 			if(!empty($login))
@@ -62,7 +62,7 @@ class Start extends MY_Controller
 				if(!empty($login->id_technician))
 				{
 					$data = array(
-						'from'			=> 'gastron_technician',
+						'from'			=> 'Gastron_technician',
 
 					    'id_technician'  			=> $login->id_technician,
 					    'email_technician'			=> $login->email_technician,

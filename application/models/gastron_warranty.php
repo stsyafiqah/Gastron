@@ -1,5 +1,5 @@
 <?php
-class gastron_warranty extends CI_Model 
+class Gastron_warranty extends CI_Model 
 {
 	public $table = 'gastron_warranty';
 	public $primary_key = 'id_warranty';

@@ -5,7 +5,7 @@
 }*/
 
  $id = $this->input->get('id');
-        $listing_portable = $this->gastron_portable->listing($id);
+        $listing_portable = $this->Gastron_portable->listing($id);
         foreach($listing_portable as $p)
         {
             

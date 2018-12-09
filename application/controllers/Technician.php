@@ -22,11 +22,11 @@ class Technician extends MY_Controller {
     public function __construct(){
         
         parent ::__construct();
-        $this->load->model('gastron_client');
-        $this->load->model('gastron_technician');
-        $this->load->model('gastron_warranty');
-        $this->load->model('gastron_product');
-        $this->load->model('gastron_model');
+        $this->load->model('Gastron_client');
+        $this->load->model('Gastron_technician');
+        $this->load->model('Gastron_warranty');
+        $this->load->model('Gastron_product');
+        $this->load->model('Gastron_model');
     
     }
     
@@ -35,7 +35,7 @@ class Technician extends MY_Controller {
 	{
         $data = array();
 		
-        $data['all_technician'] = $this->gastron_technician->listing_all();
+        $data['all_technician'] = $this->Gastron_technician->listing_all();
     
         $this->data = $data;
 		$this->middle = 'technician';
@@ -45,12 +45,12 @@ class Technician extends MY_Controller {
      public function insert_technician()
     {
     
-        $this->gastron_technician->name_technician = $this->input->post('name_technician');
-        $this->gastron_technician->email_technician = $this->input->post('email_technician');
-        $this->gastron_technician->phone_technician = $this->input->post('phone_technician');
+        $this->Gastron_technician->name_technician = $this->input->post('name_technician');
+        $this->Gastron_technician->email_technician = $this->input->post('email_technician');
+        $this->Gastron_technician->phone_technician = $this->input->post('phone_technician');
           //$this->gastron_technician->password_technician = $this->input->post('password_technician');
       
-		$q = $this->gastron_technician->insert_technician();
+		$q = $this->Gastron_technician->insert_technician();
 
         redirect('technician');
 
@@ -77,7 +77,7 @@ class Technician extends MY_Controller {
         $data = array();
 		$id_technician = $this->session->id_technician;
     
-        $data['profile'] = $this->gastron_technician->select_id($id_technician);
+        $data['profile'] = $this->Gastron_technician->select_id($id_technician);
     
         $this->data = $data;
 		$this->middle = 'profile';
@@ -88,7 +88,7 @@ class Technician extends MY_Controller {
 	{
         $data = array();
 		$id_technician = $this->session->id_technician;
-        $data['profile'] = $this->gastron_technician->listing_all($id_technician);
+        $data['profile'] = $this->Gastron_technician->listing_all($id_technician);
     
         $this->data = $data;
 		$this->middle = 'change_password';
@@ -102,14 +102,14 @@ class Technician extends MY_Controller {
 		$id_technician = $this->session->id_technician;
         //$id_technician = $this->input->post('id_technician');
         $old_password= $this->input->post('old_password');
-        $this->gastron_technician->email_technician = $this->input->post('new_password');
+        $this->Gastron_technician->email_technician = $this->input->post('new_password');
         
-        $change = $this->gastron_technician->listing_password($id_technician,$old_password);
+        $change = $this->Gastron_technician->listing_password($id_technician,$old_password);
         /*pre(count($change));
         die();*/
        if(count($change) > 0){
             
-        $q = $this->gastron_technician->update_password($id_technician);
+        $q = $this->Gastron_technician->update_password($id_technician);
            
          $text = '<div class="alert alert-info">
                          <button class="close" data-close="alert"></button>
@@ -148,11 +148,11 @@ window.location.href='change_password';
         $data = array();
 
         $id_technician = $this->input->post('id_technician');
-        $this->gastron_technician->name_technician = $this->input->post('name_technician');
-        $this->gastron_technician->email_technician = $this->input->post('email_technician');
-        $this->gastron_technician->phone_technician = $this->input->post('phone_technician');
+        $this->Gastron_technician->name_technician = $this->input->post('name_technician');
+        $this->Gastron_technician->email_technician = $this->input->post('email_technician');
+        $this->Gastron_technician->phone_technician = $this->input->post('phone_technician');
         $signature_image = $this->input->post('signature_image');
-        $this->gastron_technician->sign_technician =  ''.$id_technician.'.png';
+        $this->Gastron_technician->sign_technician =  ''.$id_technician.'.png';
         
         $sign_value = $_REQUEST['signature_image'];
 
@@ -199,8 +199,8 @@ window.location.href='change_password';
         
          
         
-		$q = $this->gastron_technician->self_update($id_technician);
-        $data['profile'] = $this->gastron_technician->select_id($id_technician);
+		$q = $this->Gastron_technician->self_update($id_technician);
+        $data['profile'] = $this->Gastron_technician->select_id($id_technician);
         $this->data = $data;
 		$this->middle = 'profile';
     	$this->layout();    
@@ -211,7 +211,7 @@ window.location.href='change_password';
     {
        $id_technician = $this->input->post('id_technician');
          
-		$q = $this->gastron_technician->delete_technician($id_technician);
+		$q = $this->Gastron_technician->delete_technician($id_technician);
 
         redirect('technician');
 

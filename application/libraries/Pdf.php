@@ -11,8 +11,8 @@ class Pdf extends TCPDF
     
     public function Header() {
 		// Logo
-		$image_file = K_PATH_IMAGES.'gastron.jpg';
-		$this->Image($image_file, 100, 5, 100, '', 'JPG', '', 'C', false, 700, '', false, false, 0, false, false, false);
+		$image_file = K_PATH_IMAGES.'gastron.png';
+		$this->Image($image_file, 100, 5, 100, '', 'png', '', 'C', false, 700, '', false, false, 0, false, false, false);
 		// Set font
 		$this->SetFont('helvetica', 'B', 10);
 		 

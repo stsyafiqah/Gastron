@@ -187,8 +187,33 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                                <a href="javascript:void(0)" class="btn_del" ids="<?=$id_model?>" data-toggle="tooltip" data-placement="top" title="Remove" data-original-title="Remove"><i class="fa fa-trash text-danger"></i></a>
-                                                
+                                               
+                                                <a href="javascript:void(0)" ids="<?php echo $id_model ?>" title="Delete Product" data-toggle="modal" data-target="#delete_model<?php echo $id_model ?>"><i class="fa fa-trash text-danger"></i></a>
+                                                <div class="modal fade" id="delete_model<?php echo $id_model ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header text-center">
+                                                            <h4 class="modal-title w-100 font-weight-bold">Delete Model</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                         <form id="wizard-clickable" class="frm_wizard frm_wizard_check" method="POST" action="<?=site_url('delete_model?id='.$id_model)?>" enctype="multipart/form-data"  novalidate>
+                                                        <div class="modal-body mx-10">
+                                                            
+                                                            
+                                                            <b>Are you sure to delete this model <?php echo $code_model ?> ?</b>
+                                                            
+                                                             
+                                                            <input type="hidden" id="form8" class="form-control validate" name="id_model" value="<?php echo $id_model ?>">
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-center">
+                                                            <button class="btn btn-success">Delete Model</button>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                                 
                                                 </td>
                                             </tr>

@@ -22,11 +22,11 @@ class Warranty extends MY_Controller {
     public function __construct(){
         
          parent ::__construct();
-        $this->load->model('gastron_client');
-        $this->load->model('gastron_technician');
-        $this->load->model('gastron_warranty');
-        $this->load->model('gastron_product');
-        $this->load->model('gastron_model');
+        $this->load->model('Gastron_client');
+        $this->load->model('Gastron_technician');
+        $this->load->model('Gastron_warranty');
+        $this->load->model('Gastron_product');
+        $this->load->model('Gastron_model');
     
     }
     
@@ -34,10 +34,10 @@ class Warranty extends MY_Controller {
     public function warranty()
 	{
          $data = array();
-		 $data['all_product'] = $this->gastron_product->listing_all();
-         $data['all_client'] = $this->gastron_client->listing_all();
-         $data['all_technician'] = $this->gastron_technician->listing_all();
-         $data['all_warranty'] = $this->gastron_warranty->listing_all();
+		 $data['all_product'] = $this->Gastron_product->listing_all();
+         $data['all_client'] = $this->Gastron_client->listing_all();
+         $data['all_technician'] = $this->Gastron_technician->listing_all();
+         $data['all_warranty'] = $this->Gastron_warranty->listing_all();
         
          $this->data = $data;
 		 $this->middle = 'warranty';
@@ -49,7 +49,7 @@ class Warranty extends MY_Controller {
          $data = array();
 		
         $id_product = $this->input->post('product_id');
-		$model      =  $this->gastron_model->select_model($id_product);
+		$model      =  $this->Gastron_model->select_model($id_product);
        
 			$pro_select_box = '';
 		if(count($model)>0)
@@ -81,18 +81,18 @@ class Warranty extends MY_Controller {
                 if(trim($war_serial[$i] != ''))
                 {*/
                     
-                       $this->gastron_warranty->year_warranty = $this->input->post('war_year');
-        $this->gastron_warranty->product_warranty = $this->input->post('war_product');
-        $this->gastron_warranty->model_warranty = $this->input->post('war_model');
-        $this->gastron_warranty->client_warranty = $this->input->post('war_client');
-        $this->gastron_warranty->location_warranty = $this->input->post('war_location');
-        $this->gastron_warranty->next_service_warranty = $this->input->post('war_date');
-        $this->gastron_warranty->start_date_warranty = $this->input->post('war_start_date');
-        $this->gastron_warranty->technician_warranty = $this->input->post('war_technician');
-        $this->gastron_warranty->type_warranty = $this->input->post('war_type');
-        $this->gastron_warranty->serial_no_warranty = $this->input->post('war_ser');
+        $this->Gastron_warranty->year_warranty = $this->input->post('war_year');
+        $this->Gastron_warranty->product_warranty = $this->input->post('war_product');
+        $this->Gastron_warranty->model_warranty = $this->input->post('war_model');
+        $this->Gastron_warranty->client_warranty = $this->input->post('war_client');
+        $this->Gastron_warranty->location_warranty = $this->input->post('war_location');
+        $this->Gastron_warranty->next_service_warranty = $this->input->post('war_date');
+        $this->Gastron_warranty->start_date_warranty = $this->input->post('war_start_date');
+        $this->Gastron_warranty->technician_warranty = $this->input->post('war_technician');
+        $this->Gastron_warranty->type_warranty = $this->input->post('war_type');
+        $this->Gastron_warranty->serial_no_warranty = $this->input->post('war_ser');
                  
-                    $q = $this->gastron_warranty->insert_warranty();
+                    $q = $this->Gastron_warranty->insert_warranty();
               /*  }
             }
          
@@ -114,10 +114,10 @@ class Warranty extends MY_Controller {
     public function services()
 	{
 		  $data = array();
-		 $data['all_product'] = $this->gastron_product->listing_all();
-         $data['all_client'] = $this->gastron_client->listing_all();
-         $data['all_technician'] = $this->gastron_technician->listing_all();
-         $data['all_warranty'] = $this->gastron_warranty->listing_all();
+		 $data['all_product'] = $this->Gastron_product->listing_all();
+         $data['all_client'] = $this->Gastron_client->listing_all();
+         $data['all_technician'] = $this->Gastron_technician->listing_all();
+         $data['all_warranty'] = $this->Gastron_warranty->listing_all();
     
 
          $this->data = $data;
@@ -138,10 +138,10 @@ class Warranty extends MY_Controller {
          
          $id_technician = $this->session->id_technician;
          
-		 $data['all_product'] = $this->gastron_product->listing_all();
-         $data['all_client'] = $this->gastron_client->listing_all();
-         $data['all_technician'] = $this->gastron_technician->listing_all();
-         $data['all_warranty'] = $this->gastron_warranty->listing_id($id_technician);
+		 $data['all_product'] = $this->Gastron_product->listing_all();
+         $data['all_client'] = $this->Gastron_client->listing_all();
+         $data['all_technician'] = $this->Gastron_technician->listing_all();
+         $data['all_warranty'] = $this->Gastron_warranty->listing_id($id_technician);
         
         //$id_product = $this->input->post('product_id');
 		//$data['all_model']      =  $this->gastron_model->select_model($id_product);
@@ -168,10 +168,10 @@ class Warranty extends MY_Controller {
 	{
 		  $data = array();
          $id_technician = $this->session->id_technician;
-		 $data['all_product'] = $this->gastron_product->listing_all();
-         $data['all_client'] = $this->gastron_client->listing_all();
-         $data['all_technician'] = $this->gastron_technician->listing_all();
-         $data['all_warranty'] = $this->gastron_warranty->listing_id($id_technician);
+		 $data['all_product'] = $this->Gastron_product->listing_all();
+         $data['all_client'] = $this->Gastron_client->listing_all();
+         $data['all_technician'] = $this->Gastron_technician->listing_all();
+         $data['all_warranty'] = $this->Gastron_warranty->listing_id($id_technician);
     
 
          $this->data = $data;
@@ -183,10 +183,10 @@ class Warranty extends MY_Controller {
 	{
 		  $data = array();
          $id = $this->input->get('id');
-		 $data['all_product'] = $this->gastron_product->listing_all();
-         $data['all_client'] = $this->gastron_client->listing_all();
-         $data['all_technician'] = $this->gastron_technician->listing_all();
-         $data['portable'] = $this->gastron_warranty->limited($id);
+		 $data['all_product'] = $this->Gastron_product->listing_all();
+         $data['all_client'] = $this->Gastron_client->listing_all();
+         $data['all_technician'] = $this->Gastron_technician->listing_all();
+         $data['portable'] = $this->Gastron_warranty->limited($id);
     
 
          $this->data = $data;
@@ -198,10 +198,10 @@ class Warranty extends MY_Controller {
 	{
 		  $data = array();
          $id = $this->input->get('id');
-		 $data['all_product'] = $this->gastron_product->listing_all();
-         $data['all_client'] = $this->gastron_client->listing_all();
-         $data['all_technician'] = $this->gastron_technician->listing_all();
-         $data['domestic'] = $this->gastron_warranty->limited($id);
+		 $data['all_product'] = $this->Gastron_product->listing_all();
+         $data['all_client'] = $this->Gastron_client->listing_all();
+         $data['all_technician'] = $this->Gastron_technician->listing_all();
+         $data['domestic'] = $this->Gastron_warranty->limited($id);
     
 
          $this->data = $data;
@@ -213,16 +213,16 @@ class Warranty extends MY_Controller {
 	{
         $data = array();
          $id = $this->input->get('id');
-		 $data['all_product'] = $this->gastron_product->listing_all();
-         $data['all_client'] = $this->gastron_client->listing_all();
-         $data['all_technician'] = $this->gastron_technician->listing_all();
-         $data['fixed'] = $this->gastron_warranty->limited($id);
+		 $data['all_product'] = $this->Gastron_product->listing_all();
+         $data['all_client'] = $this->Gastron_client->listing_all();
+         $data['all_technician'] = $this->Gastron_technician->listing_all();
+         $data['fixed'] = $this->Gastron_warranty->limited($id);
     
-        $csv_json = $this->gastron_warranty->field($id,'serial_no_warranty');
+        $csv_json = $this->Gastron_warranty->field($id,'serial_no_warranty');
         $csv_array = json_decode($csv_json,TRUE);
         /*pre($csv_array);
         die();*/
-        $data['fixeds'] = $this->gastron_warranty->limited_fixed($id,$csv_array);
+        $data['fixeds'] = $this->Gastron_warranty->limited_fixed($id,$csv_array);
         
 		//$data = array();
         

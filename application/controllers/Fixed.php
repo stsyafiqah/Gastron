@@ -6,12 +6,12 @@ class Fixed extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('gastron_client');
-        $this->load->model('gastron_technician');
-        $this->load->model('gastron_warranty');
-        $this->load->model('gastron_product');
-        $this->load->model('gastron_model');
-        $this->load->model('gastron_fixed');
+		$this->load->model('Gastron_client');
+        $this->load->model('Gastron_technician');
+        $this->load->model('Gastron_warranty');
+        $this->load->model('Gastron_product');
+        $this->load->model('Gastron_model');
+        $this->load->model('Gastron_fixed');
         $this->load->library("Pdf");
 	}
 
@@ -32,7 +32,7 @@ class Fixed extends MY_Controller
         
         
          $id = $this->input->get('id');
-        $listing_fixed = $this->gastron_fixed->listing($id);
+        $listing_fixed = $this->Gastron_fixed->listing($id);
         foreach($listing_fixed as $lf)
         {
             
@@ -275,34 +275,34 @@ class Fixed extends MY_Controller
     {
         
          $id = $this->input->get('id');
-        $this->gastron_fixed->id_warrs = $this->input->post('idw_fixed');
-        $this->gastron_fixed->cal_date = $this->input->post('cal_date');
-        $this->gastron_fixed->due_date = $this->input->post('due_date');
-        $this->gastron_fixed->instruction_from = $this->input->post('instruction_form');
-        $this->gastron_fixed->instruction_on = $this->input->post('instruction_on');
-        $this->gastron_fixed->service_details = $this->input->post('service_details');
-        $this->gastron_fixed->location = $this->input->post('location');
-        $this->gastron_fixed->gas_type = $this->input->post('gas_type');
-        $this->gastron_fixed->sensor_date = $this->input->post('sensor_date');
-        $this->gastron_fixed->detector_serial_no = $this->input->post('detector_serial_no');
-        $this->gastron_fixed->batt_voltage = $this->input->post('bat_voltage');
-        $this->gastron_fixed->detector = $this->input->post('detector');
-        $this->gastron_fixed->receiver = $this->input->post('receiver');
-         $this->gastron_fixed->cal_gas = $this->input->post('cal_gas');
-        $this->gastron_fixed->density_lel = $this->input->post('density_lel');
-        $this->gastron_fixed->full_range = $this->input->post('full_range');
-        $this->gastron_fixed->zero_before = $this->input->post('before_zero');
-        $this->gastron_fixed->zero_after = $this->input->post('after_zero');
-        $this->gastron_fixed->span_before = $this->input->post('before_span');
-        $this->gastron_fixed->span_after = $this->input->post('after_span');
-        $this->gastron_fixed->one_alarm = $this->input->post('1st_alarm');
-        $this->gastron_fixed->two_alarm = $this->input->post('2nd_alarm');
-        $this->gastron_fixed->three_alarm = $this->input->post('3rd_alarm');
-        $this->gastron_fixed->sensor_grade = $this->input->post('sensor_grade');
-        $this->gastron_fixed->remark = $this->input->post('remark');
+        $this->Gastron_fixed->id_warrs = $this->input->post('idw_fixed');
+        $this->Gastron_fixed->cal_date = $this->input->post('cal_date');
+        $this->Gastron_fixed->due_date = $this->input->post('due_date');
+        $this->Gastron_fixed->instruction_from = $this->input->post('instruction_form');
+        $this->Gastron_fixed->instruction_on = $this->input->post('instruction_on');
+        $this->Gastron_fixed->service_details = $this->input->post('service_details');
+        $this->Gastron_fixed->location = $this->input->post('location');
+        $this->Gastron_fixed->gas_type = $this->input->post('gas_type');
+        $this->Gastron_fixed->sensor_date = $this->input->post('sensor_date');
+        $this->Gastron_fixed->detector_serial_no = $this->input->post('detector_serial_no');
+        $this->Gastron_fixed->batt_voltage = $this->input->post('bat_voltage');
+        $this->Gastron_fixed->detector = $this->input->post('detector');
+        $this->Gastron_fixed->receiver = $this->input->post('receiver');
+        $this->Gastron_fixed->cal_gas = $this->input->post('cal_gas');
+        $this->Gastron_fixed->density_lel = $this->input->post('density_lel');
+        $this->Gastron_fixed->full_range = $this->input->post('full_range');
+        $this->Gastron_fixed->zero_before = $this->input->post('before_zero');
+        $this->Gastron_fixed->zero_after = $this->input->post('after_zero');
+        $this->Gastron_fixed->span_before = $this->input->post('before_span');
+        $this->Gastron_fixed->span_after = $this->input->post('after_span');
+        $this->Gastron_fixed->one_alarm = $this->input->post('1st_alarm');
+        $this->Gastron_fixed->two_alarm = $this->input->post('2nd_alarm');
+        $this->Gastron_fixed->three_alarm = $this->input->post('3rd_alarm');
+        $this->Gastron_fixed->sensor_grade = $this->input->post('sensor_grade');
+        $this->Gastron_fixed->remark = $this->input->post('remark');
         
-        	$q = $this->gastron_fixed->insert_fixed();
-             $q = $this->gastron_warranty->update_status($id);
+        $q = $this->Gastron_fixed->insert_fixed();
+        $q = $this->Gastron_warranty->update_status($id);
         redirect('services');
 
     }
@@ -312,11 +312,11 @@ class Fixed extends MY_Controller
 		  $data = array();
          $id = $this->input->get('id');
 
-         $data['listing_fixed'] = $this->gastron_fixed->listing($id);
-		 $data['all_product'] = $this->gastron_product->listing_all();
-         $data['all_client'] = $this->gastron_client->listing_all();
-         $data['all_technician'] = $this->gastron_technician->listing_all();
-         $data['portable'] = $this->gastron_warranty->limited($id);
+         $data['listing_fixed'] = $this->Gastron_fixed->listing($id);
+		 $data['all_product'] = $this->Gastron_product->listing_all();
+         $data['all_client'] = $this->Gastron_client->listing_all();
+         $data['all_technician'] = $this->Gastron_technician->listing_all();
+         $data['portable'] = $this->Gastron_warranty->limited($id);
     
 
          $this->data = $data;
@@ -328,35 +328,35 @@ class Fixed extends MY_Controller
     {
         
           $id = $this->input->get('id');
-        $this->gastron_fixed->id_warrs = $this->input->post('idw_fixed');
-        $this->gastron_fixed->cal_date = $this->input->post('cal_date');
-        $this->gastron_fixed->due_date = $this->input->post('due_date');
-        $this->gastron_fixed->instruction_from = $this->input->post('instruction_form');
-        $this->gastron_fixed->instruction_on = $this->input->post('instruction_on');
-        $this->gastron_fixed->service_details = $this->input->post('service_details');
-        $this->gastron_fixed->location = $this->input->post('location');
-        $this->gastron_fixed->gas_type = $this->input->post('gas_type');
-        $this->gastron_fixed->sensor_date = $this->input->post('sensor_date');
-        $this->gastron_fixed->detector_serial_no = $this->input->post('detector_serial_no');
-        $this->gastron_fixed->batt_voltage = $this->input->post('bat_voltage');
-        $this->gastron_fixed->detector = $this->input->post('detector');
-        $this->gastron_fixed->receiver = $this->input->post('receiver');
-         $this->gastron_fixed->cal_gas = $this->input->post('cal_gas');
-        $this->gastron_fixed->density_lel = $this->input->post('density_lel');
-        $this->gastron_fixed->full_range = $this->input->post('full_range');
-        $this->gastron_fixed->zero_before = $this->input->post('before_zero');
-        $this->gastron_fixed->zero_after = $this->input->post('after_zero');
-        $this->gastron_fixed->span_before = $this->input->post('before_span');
-        $this->gastron_fixed->span_after = $this->input->post('after_span');
-        $this->gastron_fixed->one_alarm = $this->input->post('1st_alarm');
-        $this->gastron_fixed->two_alarm = $this->input->post('2nd_alarm');
-        $this->gastron_fixed->three_alarm = $this->input->post('3rd_alarm');
-        $this->gastron_fixed->sensor_grade = $this->input->post('sensor_grade');
-        $this->gastron_fixed->remark = $this->input->post('remark');
+        $this->Gastron_fixed->id_warrs = $this->input->post('idw_fixed');
+        $this->Gastron_fixed->cal_date = $this->input->post('cal_date');
+        $this->Gastron_fixed->due_date = $this->input->post('due_date');
+        $this->Gastron_fixed->instruction_from = $this->input->post('instruction_form');
+        $this->Gastron_fixed->instruction_on = $this->input->post('instruction_on');
+        $this->Gastron_fixed->service_details = $this->input->post('service_details');
+        $this->Gastron_fixed->location = $this->input->post('location');
+        $this->Gastron_fixed->gas_type = $this->input->post('gas_type');
+        $this->Gastron_fixed->sensor_date = $this->input->post('sensor_date');
+        $this->Gastron_fixed->detector_serial_no = $this->input->post('detector_serial_no');
+        $this->Gastron_fixed->batt_voltage = $this->input->post('bat_voltage');
+        $this->Gastron_fixed->detector = $this->input->post('detector');
+        $this->Gastron_fixed->receiver = $this->input->post('receiver');
+        $this->Gastron_fixed->cal_gas = $this->input->post('cal_gas');
+        $this->Gastron_fixed->density_lel = $this->input->post('density_lel');
+        $this->Gastron_fixed->full_range = $this->input->post('full_range');
+        $this->Gastron_fixed->zero_before = $this->input->post('before_zero');
+        $this->Gastron_fixed->zero_after = $this->input->post('after_zero');
+        $this->Gastron_fixed->span_before = $this->input->post('before_span');
+        $this->Gastron_fixed->span_after = $this->input->post('after_span');
+        $this->Gastron_fixed->one_alarm = $this->input->post('1st_alarm');
+        $this->Gastron_fixed->two_alarm = $this->input->post('2nd_alarm');
+        $this->Gastron_fixed->three_alarm = $this->input->post('3rd_alarm');
+        $this->Gastron_fixed->sensor_grade = $this->input->post('sensor_grade');
+        $this->Gastron_fixed->remark = $this->input->post('remark');
         
         	
         
-        	$q = $this->gastron_fixed->update_fixed($id);
+        	$q = $this->Gastron_fixed->update_fixed($id);
 
         redirect('services');
 

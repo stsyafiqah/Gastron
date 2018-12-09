@@ -130,6 +130,7 @@ $route['delete_client']     = 'client/delete_client';
 $route['product'] 			 = 'product/index';
 $route['insert_product']     = 'product/insert_product';
 $route['update_product']     = 'product/update_product';
+$route['delete_product']     = 'product/delete_product';
 
 
 /*=====================================================================
@@ -141,7 +142,7 @@ $route['update_product']     = 'product/update_product';
 $route['model'] 			= 'model/index';
 $route['insert_model']      = 'model/insert_model';
 $route['update_model']      = 'model/update_model';
-
+$route['delete_model']     = 'model/delete_model';
 /*=====================================================================
 
                         portable

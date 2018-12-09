@@ -1,7 +1,7 @@
 <?php
 $noCount = 1;
 $id = $this->input->get('id');
-$listing_fixed = $this->gastron_fixed->listing($id);
+$listing_fixed = $this->Gastron_fixed->listing($id);
 foreach($listing_fixed as $f)
 {
     

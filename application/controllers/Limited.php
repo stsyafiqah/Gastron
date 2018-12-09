@@ -6,11 +6,11 @@ class Limited extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('gastron_client');
-        $this->load->model('gastron_technician');
-        $this->load->model('gastron_warranty');
-        $this->load->model('gastron_product');
-        $this->load->model('gastron_model');
+		 $this->load->model('Gastron_client');
+        $this->load->model('Gastron_technician');
+        $this->load->model('Gastron_warranty');
+        $this->load->model('Gastron_product');
+        $this->load->model('Gastron_model');
         $this->load->library("Pdf3");
 	}
 
@@ -30,7 +30,7 @@ class Limited extends MY_Controller
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
         
         $id = $this->input->get('id');
-        $limited_warranty = $this->gastron_warranty->limited($id);
+        $limited_warranty = $this->Gastron_warranty->limited($id);
         
         foreach($limited_warranty as $lm)
         {
@@ -42,7 +42,7 @@ class Limited extends MY_Controller
 
             $a .='<tr>
             
-                <td style="font-family:times;font-size:15px;"><img src="http://localhost/Gastron/asset_signature/signature/'.$lm->id_technician.'.png"></td>
+                <td style="font-family:times;font-size:15px;"><img src="http://cloone.my/demo/Gastron/asset_signature/signature/'.$lm->id_technician.'.png"></td>
                 <td style="font-family:times;font-size:15px;"></td>
             </tr>';
             
@@ -59,7 +59,7 @@ class Limited extends MY_Controller
         //first page
         $pdf->AddPage('P', 'A4');
        $pdf->SetFont('times', '', 25);
-         $html_1 = '<p style="width:30px;border:1px solid #000000;" align="centre"><img src="http://localhost/Gastron/asset/assets/images/gastron.png"> '.$lm->year_warranty.' YEARS LIMITED WARRANTY</p>';
+         $html_1 = '<p style="width:30px;border:1px solid #000000;" align="centre"><img src="http://cloone.my/demo/Gastron/asset/assets/images/gastron.png"> '.$lm->year_warranty.' YEARS LIMITED WARRANTY</p>';
 
          //$pdf->SetFont('times', '', 15);
          $html_2 = '<p style="font-family:times;font-size:15px;">Important : Evidence of original purchase and installation is required for warranty services</p>';

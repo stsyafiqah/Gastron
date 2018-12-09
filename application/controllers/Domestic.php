@@ -6,12 +6,12 @@ class Domestic extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('gastron_client');
-        $this->load->model('gastron_technician');
-        $this->load->model('gastron_warranty');
-        $this->load->model('gastron_product');
-        $this->load->model('gastron_model');
-         $this->load->model('gastron_domestic');
+        $this->load->model('Gastron_client');
+        $this->load->model('Gastron_technician');
+        $this->load->model('Gastron_warranty');
+        $this->load->model('Gastron_product');
+        $this->load->model('Gastron_model');         
+        $this->load->model('Gastron_domestic');
         $this->load->library("Pdf4");
 	}
 
@@ -34,7 +34,7 @@ class Domestic extends MY_Controller
         
         
          $id = $this->input->get('id');
-        $listing_domestic = $this->gastron_domestic->listing($id);
+        $listing_domestic = $this->Gastron_domestic->listing($id);
         foreach($listing_domestic as $ld)
         {
             
@@ -45,7 +45,7 @@ class Domestic extends MY_Controller
             
             if($sign_tech > 0){
 
-            $a .='<td style="font-family:times;font-size:15px;"><img src="http://localhost/Gastron/asset_signature/signature/'.$ld->id_technician.'.png"></td>';
+            $a .='<td style="font-family:times;font-size:15px;"><img src="http://cloone.my/demo/Gastron/asset_signature/signature/'.$ld->id_technician.'.png"></td>';
             
             }else{
                 
@@ -181,17 +181,17 @@ class Domestic extends MY_Controller
         
                  $id = $this->input->get('id');
 
-        $this->gastron_domestic->id_warr = $this->input->post('id_war');
-        $this->gastron_domestic->inspection_no = $this->input->post('inspection_domestic');
-        $this->gastron_domestic->date_service = $this->input->post('date_domestic');
-        $this->gastron_domestic->measuring_gas = $this->input->post('measuring_domestic');
-        $this->gastron_domestic->test_gas = $this->input->post('test_gas');
-        $this->gastron_domestic->alarm_response_time = $this->input->post('alarm_response');
-        $this->gastron_domestic->alarm_signal_output = $this->input->post('alarm_signal');
-        $this->gastron_domestic->power_test = $this->input->post('power_test');        
+        $this->Gastron_domestic->id_warr = $this->input->post('id_war');
+        $this->Gastron_domestic->inspection_no = $this->input->post('inspection_domestic');
+        $this->Gastron_domestic->date_service = $this->input->post('date_domestic');
+        $this->Gastron_domestic->measuring_gas = $this->input->post('measuring_domestic');
+        $this->Gastron_domestic->test_gas = $this->input->post('test_gas');
+        $this->Gastron_domestic->alarm_response_time = $this->input->post('alarm_response');
+        $this->Gastron_domestic->alarm_signal_output = $this->input->post('alarm_signal');
+        $this->Gastron_domestic->power_test = $this->input->post('power_test');        
         
-        $q = $this->gastron_domestic->insert_domestic();
-        $q = $this->gastron_warranty->update_status($id);
+        $q = $this->Gastron_domestic->insert_domestic();
+        $q = $this->Gastron_warranty->update_status($id);
 
         redirect('services');
 
@@ -202,16 +202,16 @@ class Domestic extends MY_Controller
     {
         
          $id = $this->input->get('id');
-        $this->gastron_domestic->id_warr = $this->input->post('id_war');
-        $this->gastron_domestic->inspection_no = $this->input->post('inspection_domestic');
-        $this->gastron_domestic->date_service = $this->input->post('date_domestic');
-        $this->gastron_domestic->measuring_gas = $this->input->post('measuring_domestic');
-        $this->gastron_domestic->test_gas = $this->input->post('test_gas');
-        $this->gastron_domestic->alarm_response_time = $this->input->post('alarm_response');
-        $this->gastron_domestic->alarm_signal_output = $this->input->post('alarm_signal');
-        $this->gastron_domestic->power_test = $this->input->post('power_test');        
+        $this->Gastron_domestic->id_warr = $this->input->post('id_war');
+        $this->Gastron_domestic->inspection_no = $this->input->post('inspection_domestic');
+        $this->Gastron_domestic->date_service = $this->input->post('date_domestic');
+        $this->Gastron_domestic->measuring_gas = $this->input->post('measuring_domestic');
+        $this->Gastron_domestic->test_gas = $this->input->post('test_gas');
+        $this->Gastron_domestic->alarm_response_time = $this->input->post('alarm_response');
+        $this->Gastron_domestic->alarm_signal_output = $this->input->post('alarm_signal');
+        $this->Gastron_domestic->power_test = $this->input->post('power_test');        
         
-        	$q = $this->gastron_domestic->update_domestic($id);
+        $q = $this->Gastron_domestic->update_domestic($id);
 
         redirect('services');
 
@@ -222,11 +222,11 @@ class Domestic extends MY_Controller
 		  $data = array();
          $id = $this->input->get('id');
 
-         $data['listing_domestic'] = $this->gastron_domestic->listing($id);
-		 $data['all_product'] = $this->gastron_product->listing_all();
-         $data['all_client'] = $this->gastron_client->listing_all();
-         $data['all_technician'] = $this->gastron_technician->listing_all();
-         $data['domestic'] = $this->gastron_warranty->limited($id);
+         $data['listing_domestic'] = $this->Gastron_domestic->listing($id);
+		 $data['all_product'] = $this->Gastron_product->listing_all();
+         $data['all_client'] = $this->Gastron_client->listing_all();
+         $data['all_technician'] = $this->Gastron_technician->listing_all();
+         $data['domestic'] = $this->Gastron_warranty->limited($id);
     
 
          $this->data = $data;

@@ -1,5 +1,5 @@
 <?php
-class gastron_domestic extends CI_Model 
+class Gastron_domestic extends CI_Model 
 {
 	public $table = 'gastron_domestic';
 	public $primary_key = 'id_domestic';

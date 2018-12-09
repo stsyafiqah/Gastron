@@ -143,8 +143,32 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                                <a href="javascript:void(0)" class="btn_del" ids="<?=$id_product?>" data-toggle="tooltip" data-placement="top" title="Remove" data-original-title="Remove"><i class="fa fa-trash text-danger"></i></a>
-                                                
+                                                <a href="javascript:void(0)" ids="<?php echo $id_product ?>" title="Delete Product" data-toggle="modal" data-target="#delete_product<?php echo $id_product ?>"><i class="fa fa-trash text-danger"></i></a>
+                                                <div class="modal fade" id="delete_product<?php echo $id_product ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header text-center">
+                                                            <h4 class="modal-title w-100 font-weight-bold">Delete Product</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                         <form id="wizard-clickable" class="frm_wizard frm_wizard_check" method="POST" action="<?=site_url('delete_product?id='.$id_product)?>" enctype="multipart/form-data"  novalidate>
+                                                        <div class="modal-body mx-10">
+                                                            
+                                                            
+                                                            <b>Are you sure to delete this product <?php echo $code_product ?> ?</b>
+                                                            
+                                                             
+                                                            <input type="hidden" id="form8" class="form-control validate" name="id_product" value="<?php echo $id_product ?>">
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-center">
+                                                            <button class="btn btn-success">Delete Client</button>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                                 
                                                 </td>
                                             </tr>

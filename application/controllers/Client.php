@@ -22,11 +22,11 @@ class Client extends MY_Controller {
     public function __construct(){
         
          parent ::__construct();
-        $this->load->model('gastron_client');
-        $this->load->model('gastron_technician');
-        $this->load->model('gastron_warranty');
-        $this->load->model('gastron_product');
-        $this->load->model('gastron_model');
+        $this->load->model('Gastron_client');
+        $this->load->model('Gastron_technician');
+        $this->load->model('Gastron_warranty');
+        $this->load->model('Gastron_product');
+        $this->load->model('Gastron_model');
     
     }
     
@@ -34,7 +34,7 @@ class Client extends MY_Controller {
 	{
         $data = array();
 		
-        $data['all_client'] = $this->gastron_client->listing_all();
+        $data['all_client'] = $this->Gastron_client->listing_all();
     
         $this->data = $data;
 		$this->middle = 'client';
@@ -44,19 +44,19 @@ class Client extends MY_Controller {
      public function insert_client()
     {
     
-        $this->gastron_client->csr_no = $this->input->post('csr_client');
-        $this->gastron_client->name_client = $this->input->post('name_client');
-        $this->gastron_client->email_client = $this->input->post('email_client');
-        $this->gastron_client->phone_client = $this->input->post('phone_client');
-        $this->gastron_client->address_client = $this->input->post('address_client');
-        $this->gastron_client->city_client = $this->input->post('city_client');
-        $this->gastron_client->state_client = $this->input->post('state_client');
-        $this->gastron_client->zip_code_client = $this->input->post('zip_code_client');
+        $this->Gastron_client->csr_no = $this->input->post('csr_client');
+        $this->Gastron_client->name_client = $this->input->post('name_client');
+        $this->Gastron_client->email_client = $this->input->post('email_client');
+        $this->Gastron_client->phone_client = $this->input->post('phone_client');
+        $this->Gastron_client->address_client = $this->input->post('address_client');
+        $this->Gastron_client->city_client = $this->input->post('city_client');
+        $this->Gastron_client->state_client = $this->input->post('state_client');
+        $this->Gastron_client->zip_code_client = $this->input->post('zip_code_client');
       
        /* pre($_POST);
          die();*/
          
-		$q = $this->gastron_client->insert_client();
+		$q = $this->Gastron_client->insert_client();
 
         redirect('client');
 
@@ -66,15 +66,15 @@ class Client extends MY_Controller {
      public function update_client()
     {
        $id_client = $this->input->post('id_client');
-         $this->gastron_client->csr_no = $this->input->post('csr_client');
-        $this->gastron_client->name_client = $this->input->post('name_client');
-        $this->gastron_client->email_client = $this->input->post('email_client');
-        $this->gastron_client->phone_client = $this->input->post('phone_client');
-        $this->gastron_client->address_client = $this->input->post('address_client');
-        $this->gastron_client->city_client = $this->input->post('city_client');
-        $this->gastron_client->state_client = $this->input->post('state_client');
-        $this->gastron_client->zip_code_client = $this->input->post('zip_code_client');
-		$q = $this->gastron_client->update_client($id_client);
+         $this->Gastron_client->csr_no = $this->input->post('csr_client');
+        $this->Gastron_client->name_client = $this->input->post('name_client');
+        $this->Gastron_client->email_client = $this->input->post('email_client');
+        $this->Gastron_client->phone_client = $this->input->post('phone_client');
+        $this->Gastron_client->address_client = $this->input->post('address_client');
+        $this->Gastron_client->city_client = $this->input->post('city_client');
+        $this->Gastron_client->state_client = $this->input->post('state_client');
+        $this->Gastron_client->zip_code_client = $this->input->post('zip_code_client');
+		$q = $this->Gastron_client->update_client($id_client);
 
         redirect('client');
 
@@ -85,7 +85,7 @@ class Client extends MY_Controller {
     {
        $id_client = $this->input->post('id_client');
          
-		$q = $this->gastron_client->delete_client($id_client);
+		$q = $this->Gastron_client->delete_client($id_client);
 
         redirect('client');
 
