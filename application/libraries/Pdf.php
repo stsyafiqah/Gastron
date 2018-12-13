@@ -12,11 +12,11 @@ class Pdf extends TCPDF
     public function Header() {
 		// Logo
 		$image_file = K_PATH_IMAGES.'gastron.png';
-		$this->Image($image_file, 100, 5, 100, '', 'png', '', 'C', false, 700, '', false, false, 0, false, false, false);
+		$this->Image($image_file, 100, 0, 90, '', 'png', '', 'C', false, 700, '', false, false, 0, false, false, false);
 		// Set font
 		$this->SetFont('helvetica', 'B', 10);
 		 
-		$this->Cell(0, 50, '6 Jalan PJU 1A/13, Taman Perindustrian Jaya, Ara Damansara, 47200 Petaling Jaya, Selangor, Malaysia    Tel: 03-7840 0199 Fax: 03-7840 0411', 0, false, 'C', 0, '', 0, false, 'T', 'M');
+		$this->Cell(0, 55, '6 Jalan PJU 1A/13, Taman Perindustrian Jaya, Ara Damansara, 47200 Petaling Jaya, Selangor, Malaysia    Tel: 03-7840 0199 Fax: 03-7840 0411', 0, false, 'C', 0, '', 0, false, 'T', 'M');
 	}
     
 	// Page footer

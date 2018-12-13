@@ -1,11 +1,8 @@
 <style>
 
-/*tbody tr:hover { background: red; }
-td a { 
-    display: block; 
-    border: 1px solid black;
-    padding: 16px; 
-}*/
+.fa-download {
+  color: mediumpurple;
+}
 
 </style>
             <!-- ============================================================== -->
@@ -45,7 +42,8 @@ td a {
                                     <table width="100%" class="table table-bordered table-hover" id="dataTables">
                                         <thead>
                                             <tr>
-                                                <th>Csr No</th>
+                                                <!--<th>Csr No</th>-->
+                                                <th>Doc</th>
                                                 <th>Client</th>
                                                 <th>Location</th>
                                                 <th>Product</th>
@@ -53,7 +51,7 @@ td a {
                                                 <th>Last Service Date</th>
                                                 <th>Next Service Date</th>
                                                 <th>Type</th>
-                                                <th>Doc</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -80,42 +78,45 @@ td a {
                                             
                                                 <?php if($type_warranty == 'Fixed'){ ?>
                                             <tr class="clickable-row" data-href="<?=site_url('fixed?id='.$id_warranty)?>">
-                                                <td><?php echo $aw->csr_no?></td>
+                                                
+                                                <td><a href="<?=site_url('fixed?id='.$id_warranty)?>" title="edit" ><i class="fa fa-pencil"></i></a>
+                                                </td>
                                                 <td><?php echo $name_client?></td>
                                                 <td><?php echo $location_warranty?></td>
                                                 <td><?php echo $code_product?></td>
                                                 <td><?php echo $code_model?></td>
-                                                <td><?php //echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
-                                                <td><?php echo date("d/m/Y ", strtotime($aw->start_date_warranty)) ?></td>
+                                                <td><?php //echo date("d/m/Y ", strtotime($aw->last_service_warranty)) ?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
                                                 <td><?php echo $type_warranty ?></td>
-                                                <td><a href="<?=site_url('fixed/generate_pdf?id='.$id_warranty.'&type='.$type_warranty)?>" title="fixed" ><i class="fa fa-eye"></i></a>
-                                                </td>
+                                                
                                             </tr>
                                                 <?php } else if($type_warranty == 'Portable') { ?>
                                             <tr class="clickable-row" data-href="<?=site_url('portable?id='.$id_warranty)?>">
-                                                <td><?php echo $aw->csr_no?></td>
+                                                
+                                                <td> <a href="<?=site_url('portable?id='.$id_warranty)?>" title="edit" ><i class="fa fa-pencil"></i></a>
+                                                </td>
                                                 <td><?php echo $name_client?></td>
                                                 <td><?php echo $location_warranty?></td>
                                                 <td><?php echo $code_product?></td>
                                                 <td><?php echo $code_model?></a></td>
-                                                <td><?php //echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
-                                                <td><?php echo date("d/m/Y ", strtotime($aw->start_date_warranty)) ?></td>
+                                                <td><?php //echo date("d/m/Y ", strtotime($aw->last_service_warranty))) : ? ?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
                                                 <td><?php echo $type_warranty ?></td>
-                                                <td> <a href="<?=site_url('portable/generate_pdf?id='.$id_warranty.'&type='.$type_warranty)?>" title="portable" ><i class="fa fa-eye"></i></a>
-                                                </td>
+                                                
                                             </tr>
                                                 <?php } else if($type_warranty == 'Domestic') { ?> 
                                             <tr class="clickable-row" data-href="<?=site_url('domestic?id='.$id_warranty)?>">
-                                                <td><?php echo $aw->csr_no?></td>
+                                                
+                                                <td><a href="<?=site_url('domestic?id='.$id_warranty)?>" title="Edit" ><i class="fa fa-pencil"></i></a>
+                                                </td>
                                                 <td><?php echo $name_client?></td>
                                                 <td><?php echo $location_warranty?></td>
                                                 <td><?php echo $code_product?></td>
                                                 <td><?php echo $code_model?></td>
-                                                <td><?php //echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
-                                                <td><?php echo date("d/m/Y ", strtotime($aw->start_date_warranty)) ?></td>
+                                                <td><?php //echo date("d/m/Y ", strtotime($aw->last_service_warranty)) ?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
                                                 <td><?php echo $type_warranty ?></td>
-                                                <td><a href="<?=site_url('domestic/generate_pdf?id='.$id_warranty.'&type='.$type_warranty)?>" title="domestic" ><i class="fa fa-eye"></i></a>
-                                                </td>
+                                                
                                             </tr>
                                                  <?php }else {} ?>
                                              
@@ -124,42 +125,48 @@ td a {
                                                      
                                                 <?php if($type_warranty == 'Fixed'){ ?>
                                             <tr class="clickable-row" data-href="<?=site_url('update_fixed?id='.$id_warranty)?>">
-                                                <td><?php echo $aw->csr_no?></td>
+                                                
+                                                <td><a href="<?=site_url('fixed/generate_pdf?id='.$id_warranty.'&type='.$type_warranty)?>" title="fixed" ><i class="fa fa-download"></i></a>&nbsp;&nbsp;
+                                                <a href="<?=site_url('update_fixed?id='.$id_warranty)?>" title="Edit" ><i class="fa fa-pencil"></i></a>
+                                                </td>
                                                 <td><?php echo $name_client?></td>
                                                 <td><?php echo $location_warranty?></td>
                                                 <td><?php echo $code_product?></td>
                                                 <td><?php echo $code_model?></a></td>
-                                                <td><?php //echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
-                                                <td><?php echo date("d/m/Y ", strtotime($aw->start_date_warranty)) ?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($aw->last_service_warranty)) ?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
                                                 <td><?php echo $type_warranty ?></td>
-                                                <td><a href="<?=site_url('fixed/generate_pdf?id='.$id_warranty.'&type='.$type_warranty)?>" title="fixed" ><i class="fa fa-eye"></i></a>
-                                                </td>
+                                                
                                             </tr>
                                                 <?php } else if($type_warranty == 'Portable') { ?>
                                             <tr class="clickable-row" data-href="<?=site_url('update_portable?id='.$id_warranty)?>">
-                                                <td><?php echo $aw->csr_no?></td>
+                                                
+                                                <td> <a href="<?=site_url('portable/generate_pdf?id='.$id_warranty.'&type='.$type_warranty)?>" title="portable" ><i class="fa fa-download"></i></a>
+                                                &nbsp;&nbsp;<a href="<?=site_url('update_portable?id='.$id_warranty)?>" title="Edit" ><i class="fa fa-pencil"></i></a>
+                                                </td>
                                                 <td><?php echo $name_client?></td>
                                                 <td><?php echo $location_warranty?></td>
                                                 <td><?php echo $code_product?></td>
                                                 <td><?php echo $code_model?></td>
-                                                <td><?php //echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
-                                                <td><?php echo date("d/m/Y ", strtotime($aw->start_date_warranty)) ?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($aw->last_service_warranty)) ?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
                                                 <td><?php echo $type_warranty ?></td>
-                                                <td> <a href="<?=site_url('portable/generate_pdf?id='.$id_warranty.'&type='.$type_warranty)?>" title="portable" ><i class="fa fa-eye"></i></a>
-                                                </td>
+                                                
                                             </tr>
                                                 <?php } else if($type_warranty == 'Domestic') { ?> 
                                             <tr class="clickable-row" data-href="<?=site_url('update_domestic?id='.$id_warranty)?>">
-                                                <td><?php echo $aw->csr_no?></td>
+                                                
+                                                <td><a href="<?=site_url('domestic/generate_pdf?id='.$id_warranty.'&type='.$type_warranty)?>" title="domestic" ><i class="fa fa-download"></i></a>
+                                                &nbsp;&nbsp;<a href="<?=site_url('update_domestic?id='.$id_warranty)?>" title="Edit" ><i class="fa fa-pencil"></i></a>
+                                                </td>
                                                 <td><?php echo $name_client?></td>
                                                 <td><?php echo $location_warranty?></td>
                                                 <td><?php echo $code_product?></td>
                                                 <td><?php echo $code_model?></td>
-                                                <td><?php //echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
-                                                <td><?php echo date("d/m/Y ", strtotime($aw->start_date_warranty)) ?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($aw->last_service_warranty)) ?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($next_service_warranty)) ?></td>
                                                 <td><?php echo $type_warranty ?></td>
-                                                <td><a href="<?=site_url('domestic/generate_pdf?id='.$id_warranty.'&type='.$type_warranty)?>" title="domestic" ><i class="fa fa-eye"></i></a>
-                                                </td>
+                                                
                                             </tr>
                                                  <?php }else {} ?>
                                              

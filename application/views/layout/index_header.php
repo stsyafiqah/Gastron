@@ -6,7 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="<?php echo base_url(); ?>asset/assets/images/gastron_logo2.png">
+    <!--<link rel="shortcut icon" href="<?php echo base_url(); ?>asset/assets/images/gastron.png">-->
+<link rel="icon" type="image/png" sizes="196x196" href="<?php echo base_url(); ?>asset/assets/images/gastron_logo.png">
     <title>Gastron</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>asset/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">

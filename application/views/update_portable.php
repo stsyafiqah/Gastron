@@ -35,15 +35,45 @@
 ?>
 
 
+
 <style>
 
-    /*tbody tr:hover { background: red; }
-    td a { 
-    display: block; 
-    border: 1px solid black;
-    padding: 16px; 
+    input[type=text] {
+    background-color: lightgray;
+    color: black;
+    border-bottom: 1px solid #000000;
+    }
+    input[value] {
+    background: lightgoldenrodyellow;
+    border-bottom: 1px solid #000000;
+    color: black;
+    }
+    
+    input[value][type=date]{
+    background-color: lightgoldenrodyellow;
+    border-bottom: 1px solid #000000;
+    color: black;
+    }
+    
+    input[type=date] {
+    background: lightgray;
+    color: black;
+    border-bottom: 1px solid #000000;
+    }
+    
+    input[readonly]  {
+    background: grey;
+    border: none;
+    color: black;
+    }
+    
+  /*  td  {
+    background: #E0E0E0;
+    border: 1px solid #000000;
+    color: black;
     }*/
-
+    
+    
 </style>
 <!-- ============================================================== -->
 <!-- Container fluid  -->
@@ -78,15 +108,16 @@
             <div class="card">
                 <div class="card-block">
                     <form id="wizard-clickable" class="frm_wizard frm_wizard_check" method="POST" action="<?=site_url('upd_portable?id='.$p->id_portable)?>" enctype="multipart/form-data"  novalidate>
+                        <div class="table-responsive">
                         <div class="modal-body mx-3">
 
                                 <div class="col-6 col-md-4">
                                     <!--<i class="fa fa-pencil prefix grey-text"></i>-->
                                     <label data-error="wrong" data-success="right" for="form8">Customer</label>
-                                    <input type="text" id="form34" class="form-control validate" name="model_portable" value="<?php echo $p->name_client ?>" placeholder="Years">
+                                    <input type="text" id="form34" class="form-control validate" name="model_portable" value="<?php echo $p->name_client ?>" readonly>
                                     <br>
-                                      <textarea class="form-control" rows="5" id="comment"><?php echo $p->address_client ?></textarea>
-                                    <input type="hidden" id="form34" class="form-control validate" name="idw_portable" value="<?php echo $p->id_warranty ?>" placeholder="Years">
+                                      <textarea class="form-control" rows="5" id="comment" readonly><?php echo $p->address_client ?></textarea>
+                                    <input type="hidden" id="form34" class="form-control validate" name="idw_portable" value="<?php echo $p->id_warranty ?>" readonly>
                                 </div>
                                 
 
@@ -95,16 +126,16 @@
                             <table id ="1" cellspacing="1" cellpadding="1" border="1">
                                 <tr>
 
-                                    <td style="width:30%;height:50px" align="centre">MODEL</td>
+                                    <td style="width:35%;height:50px" align="centre">MODEL</td>
                                     <td style="width:40%;height:50px" align="centre">NEXT CALIBRATE</td>
                                     <td style="width:30%;height:50px" align="centre">SERIAL NUMBER</td>
 
 
                                 </tr>
                                 <tr>
-                                    <td style="width:30%;height:50px" align="centre"><input type="text" id="form34" class="form-control validate" name="model_portable" value="<?php echo $p->code_model ?>" placeholder="Years"></td>
-                                    <td style="width:40%;height:50px" align="centre"><input type="text" class="form-control validate" name="next_cali_portable" value="<?php echo $p->next_service_warranty ?>" placeholder="Serial number"></td>
-                                    <td style="width:30%;height:50px" align="centre"><input type="text" class="form-control validate" name="serial_num_portable" value="<?php echo $serial_no_warranty ?>" placeholder="Serial number"></td>
+                                    <td style="width:30%;height:50px" align="centre"><input type="text" id="form34" class="form-control validate" name="model_portable" value="<?php echo $p->code_model ?>" readonly></td>
+                                    <td style="width:40%;height:50px" align="centre"><input type="text" class="form-control validate" name="next_cali_portable" value="<?php echo $p->next_service_warranty ?>" readonly></td>
+                                    <td style="width:30%;height:50px" align="centre"><input type="text" class="form-control validate" name="serial_num_portable[]" value="<?php echo $serial_no_warranty ?>"></td>
                                 </tr>
 
 
@@ -124,14 +155,14 @@
 
                                 <tr>
 
-                                    <td style="width:30%;height:50px" align="centre">COMPONENTS</td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="comp_1" value="<?php echo $p->comp_1 ?>" ></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="comp_2" value="<?php echo $p->comp_2 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="comp_3" value="<?php echo $p->comp_3 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="comp_4" value="<?php echo $p->comp_4 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="comp_5" value="<?php echo $p->comp_5 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="comp_6" value="<?php echo $p->comp_6 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="comp_7" value="<?php echo $p->comp_7 ?>"></td>
+                                    <td align="centre">COMPONENTS</td>
+                                    <td align="centre"><input type="text" class="form-control validate" name="comp_1" value="<?php echo $p->comp_1 ?>" style="width: 200px;"></td>
+                                    <td align="centre"><input type="text" class="form-control validate" name="comp_2" value="<?php echo $p->comp_2 ?>" style="width: 200px;"></td>
+                                    <td align="centre"><input type="text" class="form-control validate" name="comp_3" value="<?php echo $p->comp_3 ?>" style="width: 200px;"></td>
+                                    <td align="centre"><input type="text" class="form-control validate" name="comp_4" value="<?php echo $p->comp_4 ?>" style="width: 200px;"></td>
+                                    <td align="centre"><input type="text" class="form-control validate" name="comp_5" value="<?php echo $p->comp_5 ?>" style="width: 200px;"></td>
+                                    <td align="centre"><input type="text" class="form-control validate" name="comp_6" value="<?php echo $p->comp_6 ?>" style="width: 200px;"></td>
+                                    <td align="centre"><input type="text" class="form-control validate" name="comp_7" value="<?php echo $p->comp_7 ?>" style="width: 200px;"></td>
 
 
                                 </tr>
@@ -166,57 +197,69 @@
 
                                 <tr>
 
-                                    <td style="width:30%;height:50px" align="centre"></td>
-                                    <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="gas_1" value="<?php echo $p->gas_1 ?>"></td>
-                                    <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="gas_2" value="<?php echo $p->gas_2 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="gas_3" value="<?php echo $p->gas_3 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="gas_4" value="<?php echo $p->gas_4 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"></td>
+                                    <td style="width:20%100px;height:50px" align="centre"><input type="text" class="form-control validate" name="gas_1" value="<?php echo $p->gas_1 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="gas_2" value="<?php echo $p->gas_2 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="gas_3" value="<?php echo $p->gas_3 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="gas_4" value="<?php echo $p->gas_4 ?>"></td>
 
 
 
                                 </tr>
                                 <tr>
-                                    <td style="width:30%;height:50px" align="centre">HIGH</td>
-                                    <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="h_1" value="<?php echo $p->high_1 ?>"></td>
-                                    <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="h_2" value="<?php echo $p->high_2 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="h_3" value="<?php echo $p->high_3 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="h_4" value="<?php echo $p->high_4 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre">HIGH</td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="h_1" value="<?php echo $p->high_1 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="h_2" value="<?php echo $p->high_2 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="h_3" value="<?php echo $p->high_3 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="h_4" value="<?php echo $p->high_4 ?>"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td style="width:30%;height:50px" align="centre">LOW</td>
-                                   <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="l_1" value="<?php echo $p->low_1 ?>"></td>
-                                    <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="l_2" value="<?php echo $p->low_2 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="l_3" value="<?php echo $p->low_3 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="l_4" value="<?php echo $p->low_4 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre">LOW</td>
+                                   <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="l_1" value="<?php echo $p->low_1 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="l_2" value="<?php echo $p->low_2 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="l_3" value="<?php echo $p->low_3 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="l_4" value="<?php echo $p->low_4 ?>"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td style="width:30%;height:50px" align="centre">TWA</td>
-                                   <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="t_1" value="<?php echo $p->twa_1 ?>"></td>
-                                    <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="t_2" value="<?php echo $p->twa_2 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="t_3" value="<?php echo $p->twa_3 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="t_4" value="<?php echo $p->twa_4 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre">TWA</td>
+                                   <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="t_1" value="<?php echo $p->twa_1 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="t_2" value="<?php echo $p->twa_2 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="t_3" value="<?php echo $p->twa_3 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="t_4" value="<?php echo $p->twa_4 ?>"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td style="width:30%;height:50px" align="centre">STEL</td>
-                                   <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="s_1" value="<?php echo $p->stel_1 ?>"></td>
-                                    <td style="width:20%;height:50px" align="centre"><input type="text" class="form-control validate" name="s_2" value="<?php echo $p->stel_2 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="s_3" value="<?php echo $p->stel_3 ?>"></td>
-                                    <td style="width:10%;height:50px" align="centre"><input type="text" class="form-control validate" name="s_4" value="<?php echo $p->stel_4 ?>" ></td>
+                                    <td style="width:100px;height:50px" align="centre">STEL</td>
+                                   <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="s_1" value="<?php echo $p->stel_1 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="s_2" value="<?php echo $p->stel_2 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="s_3" value="<?php echo $p->stel_3 ?>"></td>
+                                    <td style="width:100px;height:50px" align="centre"><input type="text" class="form-control validate" name="s_4" value="<?php echo $p->stel_4 ?>" ></td>
 
                                 </tr>
 
+                            </table>
+                            <br><br>
+                            <table id ="1" cellspacing="1" cellpadding="1" border="1">
+                                <tr>
+                                <td style="width:40%;height:50px" align="centre">Last Service Date</td>
+                                <td style="width:40%;height:50px" align="centre">Next Service Date</td>
+                                </tr>
+                                <tr>
+                                <td style="width:40%;height:50px" align="centre"><input type="date" class="form-control validate" name="last_service" value="<?php echo $p->last_service_warranty ?>"></td>
+                                <td style="width:40%;height:50px" align="centre"><input type="date" class="form-control validate" name="next_service" value="<?php echo $p->next_service_warranty ?>"></td>
+                                </tr>
                             </table>
                         </div>
 
                             <div class="modal-footer d-flex justify-content-center">
                                 <button class="btn btn-success">Update</button>
                             </div>
+                        </div>
                             </form>
                         </div>
                 </div>

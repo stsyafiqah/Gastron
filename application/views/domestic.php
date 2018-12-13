@@ -14,13 +14,42 @@ foreach($domestic as $d)
 
 <style>
 
-    /*tbody tr:hover { background: red; }
-    td a { 
-    display: block; 
-    border: 1px solid black;
-    padding: 16px; 
+    input[type=text] {
+    background-color: lightgray;
+    color: black;
+    border-bottom: 1px solid #000000;
+    }
+    input[value] {
+    background: lightgoldenrodyellow;
+    border-bottom: 1px solid #000000;
+    color: black;
+    }
+    
+    input[value][type=date]{
+    background-color: lightgoldenrodyellow;
+    border-bottom: 1px solid #000000;
+    color: black;
+    }
+    
+    input[type=date] {
+    background: lightgray;
+    color: black;
+    border-bottom: 1px solid #000000;
+    }
+    
+    input[readonly]  {
+    background: grey;
+    border: none;
+    color: black;
+    }
+    
+  /*  td  {
+    background: #E0E0E0;
+    border: 1px solid #000000;
+    color: black;
     }*/
-
+    
+    
 </style>
 <!-- ============================================================== -->
 <!-- Container fluid  -->
@@ -60,7 +89,7 @@ foreach($domestic as $d)
                                 <table id ="1" cellspacing="1" cellpadding="1" border="1">
                                     <tr>
 
-                                        <td colspan="4">CUSTOMER : <?php echo $d->name_client ?></td>
+                                        <td colspan="4"><b>CUSTOMER : </b><input type="text" class="form-control" value="<?php echo $d->name_client ?>" readonly></td>
 
                                     </tr>
                                     <tr>
@@ -73,7 +102,7 @@ foreach($domestic as $d)
                                         <td>Inspection No</td>
                                         <td><input type="text" id="form34" class="form-control validate" name="inspection_domestic"></td>
                                         <td>Date</td>
-                                        <td><input type="date" id="form34" class="form-control validate" name="date_domestic"></td>
+                                        <td style="width:40%"><input type="date" id="form34" class="form-control validate" name="date_domestic"></td>
 
                                     </tr>
                                     <tr>
@@ -81,7 +110,7 @@ foreach($domestic as $d)
                                         <td>Measuring Gas</td>
                                         <td><input type="text" id="form34" class="form-control validate" name="measuring_domestic"></td>
                                         <td>Model No</td>
-                                        <td><?php echo $d->code_model ?></td>
+                                        <td><input type="text" class="form-control validate" value="<?php echo $d->code_model ?>" readonly></td>
 
                                     </tr>
                                 </table>
@@ -129,6 +158,16 @@ foreach($domestic as $d)
                                 </tr>
                              </table>
                             <br><br>
+                            <table id ="1" cellspacing="1" cellpadding="1" border="1">
+                                <tr>
+                                <td style="width:40%;height:50px" align="centre">Last Service Date</td>
+                                <td style="width:40%;height:50px" align="centre">Next Service Date</td>
+                                </tr>
+                                <tr>
+                                <td style="width:40%;height:50px" align="centre"><input type="date" class="form-control validate" name="last_service"></td>
+                                <td style="width:40%;height:50px" align="centre"><input type="date" class="form-control validate" name="next_service" ></td>
+                                </tr>
+                            </table>
                             <!--<table id ="1" cellspacing="1" cellpadding="1" border="1">
             
                              <tr>

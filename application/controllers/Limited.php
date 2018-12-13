@@ -59,7 +59,7 @@ class Limited extends MY_Controller
         //first page
         $pdf->AddPage('P', 'A4');
        $pdf->SetFont('times', '', 25);
-         $html_1 = '<p style="width:30px;border:1px solid #000000;" align="centre"><img src="http://cloone.my/demo/Gastron/asset/assets/images/gastron.png"> '.$lm->year_warranty.' YEARS LIMITED WARRANTY</p>';
+         $html_1 = '<p style="border:1px solid #000000;" ><img src="http://cloone.my/demo/Gastron/asset/assets/images/gastron.png"> '.$lm->year_warranty.' YEARS LIMITED WARRANTY</p>';
 
          //$pdf->SetFont('times', '', 15);
          $html_2 = '<p style="font-family:times;font-size:15px;">Important : Evidence of original purchase and installation is required for warranty services</p>';

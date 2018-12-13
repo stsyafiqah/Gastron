@@ -53,6 +53,7 @@ class Gastron_fixed extends CI_Model
         "three_alarm"=>json_encode($this->three_alarm),
         "sensor_grade"=>json_encode($this->sensor_grade),
         "remark"=>$this->remark,
+        //"remark"=>json_encode($this->remark),     
              
      	);
         

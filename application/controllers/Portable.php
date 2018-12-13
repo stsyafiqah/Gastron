@@ -94,7 +94,7 @@ class Portable extends MY_Controller
         $html_customer ='<table id ="1" cellspacing="1" cellpadding="1" border="0">
         <tr>
            <td style="width:20%;height:50px">CUSTOMER :</td>
-           <td style="width:80%;height:80px"><p style="width:30px;border:1px solid #000000;" align="left">'.$lp->name_client.' <br> '.$lp->address_client.'</p></td>
+           <td style="width:80%;height:80px"><p style="width:30px;border:1px solid #000000;" align="left">'.$lp->name_client.' <br><br> '.$lp->address_client.'</p></td>
         </tr>
         
         </table>
@@ -112,7 +112,7 @@ class Portable extends MY_Controller
          </tr>
           <tr>
                 <td style="width:30%;height:50px" align="centre">'.$lp->code_model.'</td>
-                <td style="width:40%;height:50px" align="centre">'.$lp->next_service_warranty.'</td>
+                <td style="width:40%;height:50px" align="centre">'.date("d/m/Y ", strtotime($lp->next_service_warranty)).'</td>
                 <td style="width:30%;height:50px" align="centre">'.$b.'</td>
          </tr>
          
@@ -272,6 +272,9 @@ class Portable extends MY_Controller
         
          $id = $this->input->get('id');
         $this->Gastron_portable->id_warrantys = $this->input->post('idw_portable');
+        $this->Gastron_warranty->serial_no_warranty	 = $this->input->post('serial_num_portable');
+        $this->Gastron_warranty->last_service_warranty = $this->input->post('last_service');
+        $this->Gastron_warranty->next_service_warranty = $this->input->post('next_service');
         $this->Gastron_portable->comp_1 = $this->input->post('comp_1');
         $this->Gastron_portable->comp_2 = $this->input->post('comp_2');
         $this->Gastron_portable->comp_3 = $this->input->post('comp_3');
@@ -342,7 +345,7 @@ class Portable extends MY_Controller
     {
         
          $id = $this->input->get('id');
-        
+         $id_w = $this->input->post('idw_portable');
         $this->Gastron_portable->id_warrantys = $this->input->post('idw_portable');
         $this->Gastron_portable->comp_1 = $this->input->post('comp_1');
         $this->Gastron_portable->comp_2 = $this->input->post('comp_2');
@@ -385,8 +388,11 @@ class Portable extends MY_Controller
         $this->Gastron_portable->stel_2 = $this->input->post('s_2');
         $this->Gastron_portable->stel_3 = $this->input->post('s_3');
         $this->Gastron_portable->stel_4 = $this->input->post('s_4');
-    
-        
+       $this->Gastron_portable->id_warrantys = $this->input->post('idw_portable');
+        $this->Gastron_warranty->serial_no_warranty	 = $this->input->post('serial_num_portable');
+        $this->Gastron_warranty->last_service_warranty = $this->input->post('last_service');
+        $this->Gastron_warranty->next_service_warranty = $this->input->post('next_service');
+         $q = $this->Gastron_warranty->updated($id_w);
         	$q = $this->Gastron_portable->update_portable($id);
 
         redirect('services');

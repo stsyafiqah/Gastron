@@ -12,15 +12,45 @@
 ?>
 
 
+
 <style>
 
-    /*tbody tr:hover { background: red; }
-    td a { 
-    display: block; 
-    border: 1px solid black;
-    padding: 16px; 
+    input[type=text] {
+    background-color: lightgray;
+    color: black;
+    border-bottom: 1px solid #000000;
+    }
+    input[value] {
+    background: lightgoldenrodyellow;
+    border-bottom: 1px solid #000000;
+    color: black;
+    }
+    
+    input[value][type=date]{
+    background-color: lightgoldenrodyellow;
+    border-bottom: 1px solid #000000;
+    color: black;
+    }
+    
+    input[type=date] {
+    background: lightgray;
+    color: black;
+    border-bottom: 1px solid #000000;
+    }
+    
+    input[readonly]  {
+    background: grey;
+    border: none;
+    color: black;
+    }
+    
+  /*  td  {
+    background: #E0E0E0;
+    border: 1px solid #000000;
+    color: black;
     }*/
-
+    
+    
 </style>
 <!-- ============================================================== -->
 <!-- Container fluid  -->
@@ -128,7 +158,17 @@
 
                                 </tr>
                              </table>
-                            <br><br>
+                             <br><br>
+                            <table id ="1" cellspacing="1" cellpadding="1" border="1">
+                                <tr>
+                                <td style="width:40%;height:50px" align="centre">Last Service Date</td>
+                                <td style="width:40%;height:50px" align="centre">Next Service Date</td>
+                                </tr>
+                                <tr>
+                                <td style="width:40%;height:50px" align="centre"><input type="date" class="form-control validate" name="last_service" value="<?php echo $d->last_service_warranty ?>"></td>
+                                <td style="width:40%;height:50px" align="centre"><input type="date" class="form-control validate" name="next_service" value="<?php echo $d->next_service_warranty ?>"></td>
+                                </tr>
+                            </table>
                             <!--<table id ="1" cellspacing="1" cellpadding="1" border="1">
             
                              <tr>

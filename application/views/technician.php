@@ -106,16 +106,16 @@ input[type=password] {
                                         </thead>
                                         <tbody>
                                             <?php 		
-                            
-                            $key=0;
-							foreach($all_technician as $ac)
-                            {	
-                              $key++;    
-                              $id_technician          = $ac->id_technician;
-                              $name_technician        = $ac->name_technician;
-                              $phone_technician       = $ac->phone_technician;
-                              $email_technician       = $ac->email_technician;
-                              ?>
+
+                                                $key=0;
+                                                foreach($all_technician as $ac)
+                                                {	
+                                                  $key++;    
+                                                  $id_technician          = $ac->id_technician;
+                                                  $name_technician        = $ac->name_technician;
+                                                  $phone_technician       = $ac->phone_technician;
+                                                  $email_technician       = $ac->email_technician;
+                                            ?>
                                             <tr>
                                                 <td><?php echo $key?></td>
                                                 <td><?php echo $name_technician ?></td>
@@ -133,22 +133,22 @@ input[type=password] {
                                                         </div>
                                                          <form id="wizard-clickable" class="frm_wizard frm_wizard_check" method="POST" action="<?=site_url('update_technician?id='.$id_technician)?>" enctype="multipart/form-data"  novalidate>
                                                         <div class="modal-body mx-3">
-                                                            <div class="md-form mb-3">
+                                                            <div class="form-group md-form mb-3">
                                                                <!-- <i class="fa fa-user prefix grey-text"></i>-->
-                                                                <label data-error="wrong" data-success="right" for="form34">Name</label>
+                                                                <label data-error="wrong" data-success="right" for="form34">Name : </label>
                                                                 <input type="text" id="form34" class="form-control validate" name="name_technician" placeholder="Name" value="<?php echo $name_technician ?>">
 
                                                             </div>
 
-                                                            <div class="md-form mb-3">
+                                                            <div class="form-group md-form mb-3">
                                                                 <!--<i class="fa fa-envelope prefix grey-text"></i>-->
-                                                                <label data-error="wrong" data-success="right" for="form34">Email</label>
+                                                                <label data-error="wrong" data-success="right" for="form34">Email : </label>
                                                                 <input type="email" id="form34" class="form-control validate" name="email_technician" placeholder="Email" value="<?php echo $email_technician ?>">
                                                             </div>
 
-                                                            <div class="md-form mb-3">
+                                                            <div class="form-group md-form mb-3">
                                                                 <!--<i class="fa fa-tag prefix grey-text"></i>-->
-                                                                 <label data-error="wrong" data-success="right" for="form34">Model</label>
+                                                                 <label data-error="wrong" data-success="right" for="form34">Model : </label>
                                                                 <input type="text" id="form34" class="form-control validate" name="phone_technician" placeholder="Phone" value="<?php echo $phone_technician ?>">
                                                             </div>
                                                             <input type="hidden" id="form8" class="form-control validate" name="id_technician" value="<?php echo $id_technician ?>">

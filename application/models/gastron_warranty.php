@@ -35,13 +35,29 @@ class Gastron_warranty extends CI_Model
         $db->join('gastron_product d','a.product_warranty = d.id_product ','LEFT');
         $db->join('gastron_model e','a.model_warranty = e.id_model ','LEFT');
 		$db->where('a.active',1);
-        $this->db->order_by('a.id_warranty', 'ASC');
+        $this->db->order_by('a.start_date_warranty', 'ASC');
 		$q = $db->get()->result();
+       //$q = $db->get($this->table)->row();
 		return $q;
-        
-		/*pre($q);
-        exit();*/
-		//return $q;
+       
+	}
+    
+     function listing_service()
+	{
+         
+        $db = $this->db;
+		$db->select('a.*,b.*,c.*,d.*,e.*');
+        $db->from($this->table.' a');
+        $db->join('gastron_client b','a.client_warranty = b.id_client ','LEFT');
+        $db->join('gastron_technician c','a.technician_warranty = c.id_technician ','LEFT');
+        $db->join('gastron_product d','a.product_warranty = d.id_product ','LEFT');
+        $db->join('gastron_model e','a.model_warranty = e.id_model ','LEFT');
+		$db->where('a.active',1);
+       $this->db->order_by('a.start_date_warranty', 'ASC');
+		$q = $db->get()->result();
+       //$q = $db->get($this->table)->row();
+		return $q;
+       
 	}
     
     function insert_warranty()
@@ -134,7 +150,9 @@ class Gastron_warranty extends CI_Model
     function update_status($id)
 	{
          $data = array(
-				
+        "last_service_warranty"=>$this->last_service_warranty,
+        "next_service_warranty"=>$this->next_service_warranty,
+		"serial_no_warranty"=>json_encode($this->serial_no_warranty),
 		"status"=>1,
         
        
@@ -148,7 +166,84 @@ class Gastron_warranty extends CI_Model
 		return $q;
 	}
         
+        
+function update_domestic($id)
+	{
+         $data = array(
+        "last_service_warranty"=>$this->last_service_warranty,
+        "next_service_warranty"=>$this->next_service_warranty,
+		//"serial_no_warranty"=>json_encode($this->serial_no_warranty),
+		"status"=>1,
+        
+       
+             
+     	);
+        
+		//$q = $this->db->insert($this->table,$data);
+        $q = $this->db->where('id_warranty',$id)->update($this->table,$data);
+		/*pre($q);
+        exit();*/
+		return $q;
+	}
      
+    
+    function updated($id_w)
+	{
+         $data = array(
+        "last_service_warranty"=>$this->last_service_warranty,
+        "next_service_warranty"=>$this->next_service_warranty,
+		"serial_no_warranty"=>json_encode($this->serial_no_warranty),
+		"status"=>1,
+        
+       
+             
+     	);
+        
+		//$q = $this->db->insert($this->table,$data);
+        $q = $this->db->where('id_warranty',$id_w)->update($this->table,$data);
+		/*pre($q);
+        exit();*/
+		return $q;
+	}
+    
+    function listing_email()
+	{
+         
+        $db = $this->db;
+		$db->select('a.*,b.*,c.*,d.*,e.*');
+        $db->from($this->table.' a');
+        $db->join('gastron_client b','a.client_warranty = b.id_client ','LEFT');
+        $db->join('gastron_technician c','a.technician_warranty = c.id_technician ','LEFT');
+        $db->join('gastron_product d','a.product_warranty = d.id_product ','LEFT');
+        $db->join('gastron_model e','a.model_warranty = e.id_model ','LEFT');
+		$db->where('a.active',1);
+        $db->where('a.next_service_warranty = DATE_ADD(curdate(), INTERVAL 31 DAY)') ;
+        $this->db->order_by('a.id_warranty', 'ASC');
+		$q = $db->get()->result();
+       //$q = $db->get($this->table)->row();
+		return $q;
+       
+	}
+    
+    function list_email()
+	{
+         
+        $db = $this->db;
+		$db->select('a.*,b.*,c.*,d.*,e.*');
+        $db->from($this->table.' a');
+        $db->join('gastron_client b','a.client_warranty = b.id_client ','LEFT');
+        $db->join('gastron_technician c','a.technician_warranty = c.id_technician ','LEFT');
+        $db->join('gastron_product d','a.product_warranty = d.id_product ','LEFT');
+        $db->join('gastron_model e','a.model_warranty = e.id_model ','LEFT');
+		$db->where('a.active',1);
+        $db->where('a.next_service_warranty = DATE_ADD(curdate(), INTERVAL 1 DAY)') ;
+        $this->db->order_by('a.id_warranty', 'ASC');
+        $db->limit(1);
+		$q = $db->get()->result();
+       //$q = $db->get($this->table)->row();
+		return $q;
+       
+	}
     
 }
 ?>

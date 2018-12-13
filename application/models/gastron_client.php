@@ -96,6 +96,21 @@ class Gastron_client extends CI_Model
 		return $q;
 	}
     
+    function listing_client($csr_no)
+	{
+         
+        $db = $this->db;
+		$db->select('csr_no');
+        $db->from($this->table);
+		$db->where('active',1);
+        $db->where('csr_no',$csr_no);
+		$q = $db->get()->result();
+		return $q;
+        
+		/*pre($q);
+        exit();*/
+		//return $q;
+	}
     
 }
 ?>

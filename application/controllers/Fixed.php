@@ -68,7 +68,9 @@ class Fixed extends MY_Controller
     $two_alarm = $lf->two_alarm;
     $three_alarm = $lf->three_alarm;
     $sensor_grade = $lf->sensor_grade;
-    
+    $remarks = $lf->remark;
+            
+            
      $sensor_dates = json_decode($sensor_date,TRUE);
      $serial_no = json_decode($serial,TRUE);
      $batt_voltages = json_decode($batt_voltage,TRUE);
@@ -85,7 +87,7 @@ class Fixed extends MY_Controller
      $two_alarms = json_decode($two_alarm,TRUE);
      $three_alarms = json_decode($three_alarm,TRUE);
      $sensor_grades = json_decode($sensor_grade,TRUE);
-    
+     $remarks_tech = json_decode($remarks,TRUE);
     
     
     //$ser_count = count($serial_no);
@@ -134,8 +136,23 @@ class Fixed extends MY_Controller
          
            </tr> ';
               $count_pc++; 
-        }  
-        
+        } 
+            
+           /* $c = '';
+        //$count_pc = 1;    
+		for ( $x = 0; $x < 6; $x++ )
+		{
+		     $remarks_technician     = ( isset( $remarks_tech[$x] ) ? $remarks_tech[$x] : "" );
+             /* $pro_desc     = ( isset( $product_component[$x]['component_desc'] ) ? $product_component[$x]['component_desc'] : "" );
+              $pro_qty	    = ( isset( $product_component[$x]['component_qty'] ) ? $product_component[$x]['component_qty'] : "" );
+              $pro_unit	    = ( isset( $product_component[$x]['component_unitcost'] ) ? $product_component[$x]['component_unitcost'] : "" );
+              $pro_amount	= ( isset( $product_component[$x]['component_amount'] ) ? $product_component[$x]['component_amount'] : "" );
+            
+              $c .= '
+               <tr><td style="width:100%;border:none" colspan="17">'.$remarks_technician.'</td></tr>';
+              //$count_pc++; 
+        }   
+        */
         //first page
         $pdf->AddPage('L', 'A4');
        $pdf->SetFont('times', '', 10);
@@ -196,18 +213,18 @@ class Fixed extends MY_Controller
          </tr>
          
           <tr>
-                <td style="width:50px;height:50px" rowspan="2" align="center">No</td>
-                <td style="width:100px;height:50px" rowspan="2" align="center">Sensor Date</td>
-                <td style="width:80px;height:50px" rowspan="2" align="center">Detector Serial. No</td>
-                <td style="width:60px;height:50px" rowspan="2" align="center">Batt Voltage</td>
-                <td style="width:140px;height:50px" colspan="2" align="center">Model</td>
-                <td style="width:55px;height:50px" rowspan="2" align="center">Cal Gas</td>
-                <td style="width:60px;height:50px" rowspan="2" align="center">Density Lel %</td>
-                <td style="width:70px;height:50px" rowspan="2" align="center">Full Range Lel %</td>
-                <td style="width:90px;height:50px" colspan="2" align="center">Zero</td>
-                <td style="width:100px;height:50px" colspan="2" align="center">Span</td>
-                <td style="width:100px;height:50px" colspan="3" align="center">Alarm Setting</td>
-                <td style="width:52px;height:50px" rowspan="2" align="center">Sensor Grade</td>
+                <td style="width:50px;height:10px" rowspan="2" align="center">No</td>
+                <td style="width:100px;height:10px" rowspan="2" align="center">Sensor Date</td>
+                <td style="width:80px;height:10px" rowspan="2" align="center">Detector Serial. No</td>
+                <td style="width:60px;height:10px" rowspan="2" align="center">Batt Voltage</td>
+                <td style="width:140px;height:10px" colspan="2" align="center">Model</td>
+                <td style="width:55px;height:10px" rowspan="2" align="center">Cal Gas</td>
+                <td style="width:60px;height:10px" rowspan="2" align="center">Density Lel %</td>
+                <td style="width:70px;height:10px" rowspan="2" align="center">Full Range Lel %</td>
+                <td style="width:90px;height:10px" colspan="2" align="center">Zero</td>
+                <td style="width:100px;height:10px" colspan="2" align="center">Span</td>
+                <td style="width:100px;height:10px" colspan="3" align="center">Alarm Setting</td>
+                <td style="width:52px;height:10px" rowspan="2" align="center">Sensor Grade</td>
               
              
                 
@@ -229,12 +246,12 @@ class Fixed extends MY_Controller
          
          <tr>
                 
-                <td style="width:100%;height:20px" colspan="17"> *Remark : '.$lf->remark.'</td>
+                <td style="width:100%;height:10px" colspan="17"> *Remark : '.$remarks_technician.'</td>
                 
          </tr>
          
           <tr>
-                <td style="width:70%" colspan="10" rowspan="2">* SENSOR GRADE DIVISION <br>A GRADE : Best condition of sensitibity<br>B GRADE : Need to do sensitiVity adjustment and management <br>C GRADE : Sensor hunting or faulty will be expected,because of low sensitibity,sensor replacement required on next service <br>D GRADE: Measurment is not possible,need to replace sensor immediately</td>
+                <td style="width:70%" colspan="10" rowspan="2">* SENSOR GRADE DIVISION <br>A GRADE : Best condition of sensitibity<br>B GRADE : Need to do sensitivity adjustment and management <br>C GRADE : Sensor hunting or faulty will be expected,because of low sensitibity,sensor replacement required on next service <br>D GRADE: Measurment is not possible,need to replace sensor immediately</td>
                 <td style="width:15%" colspan="3"> SERVICED BY :<br> '.$b.'</td>
                 <td style="width:15%;height:50px" colspan="4"> '.$lf->name_technician.'</td>
          </tr>
@@ -300,6 +317,9 @@ class Fixed extends MY_Controller
         $this->Gastron_fixed->three_alarm = $this->input->post('3rd_alarm');
         $this->Gastron_fixed->sensor_grade = $this->input->post('sensor_grade');
         $this->Gastron_fixed->remark = $this->input->post('remark');
+        $this->Gastron_warranty->serial_no_warranty	 = $this->input->post('detector_serial_no');
+        $this->Gastron_warranty->last_service_warranty = $this->input->post('last_service');
+        $this->Gastron_warranty->next_service_warranty = $this->input->post('next_service');
         
         $q = $this->Gastron_fixed->insert_fixed();
         $q = $this->Gastron_warranty->update_status($id);
@@ -328,6 +348,7 @@ class Fixed extends MY_Controller
     {
         
           $id = $this->input->get('id');
+         $id_w = $this->input->post('idw_fixed');
         $this->Gastron_fixed->id_warrs = $this->input->post('idw_fixed');
         $this->Gastron_fixed->cal_date = $this->input->post('cal_date');
         $this->Gastron_fixed->due_date = $this->input->post('due_date');
@@ -353,11 +374,14 @@ class Fixed extends MY_Controller
         $this->Gastron_fixed->three_alarm = $this->input->post('3rd_alarm');
         $this->Gastron_fixed->sensor_grade = $this->input->post('sensor_grade');
         $this->Gastron_fixed->remark = $this->input->post('remark');
+        $this->Gastron_warranty->serial_no_warranty	 = $this->input->post('detector_serial_no');
+        $this->Gastron_warranty->last_service_warranty = $this->input->post('last_service');
+        $this->Gastron_warranty->next_service_warranty = $this->input->post('next_service');
         
         	
         
-        	$q = $this->Gastron_fixed->update_fixed($id);
-
+         $q = $this->Gastron_fixed->update_fixed($id);
+         $q = $this->Gastron_warranty->updated($id_w);
         redirect('services');
 
     }

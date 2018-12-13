@@ -48,15 +48,15 @@
                              <form id="wizard-clickable" class="frm_wizard frm_wizard_check" method="POST" action="<?=site_url('insert_product')?>" enctype="multipart/form-data"  novalidate>
                             <div class="modal-body mx-3">
                                 <div class="md-form mb-3">
-                                   <!-- <i class="fa fa-user prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="form34">Years</label>-->
+                                  <!--  <i class="fa fa-user prefix grey-text"></i>-->
+                                    <label data-error="wrong" data-success="right" for="form34">Product</label>
                                     <input type="text" id="form34" class="form-control validate" name="code_product" placeholder="Product Code">
                                     
                                 </div>
 
                                 <div class="md-form mb-3">
-                                    <!--<i class="fa fa-envelope prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="form29">Product</label>-->
+                                   <!-- <i class="fa fa-envelope prefix grey-text"></i>-->
+                                    <label data-error="wrong" data-success="right" for="form29">Description</label>
                                     <input type="email" id="form8" class="form-control validate" name="desc_product" placeholder="Product Description">
                                 </div>
 
@@ -121,16 +121,16 @@
                                                         </div>
                                                          <form id="wizard-clickable" class="frm_wizard frm_wizard_check" method="POST" action="<?=site_url('update_product?id='.$id_product)?>" enctype="multipart/form-data"  novalidate>
                                                         <div class="modal-body mx-3">
-                                                            <div class="md-form mb-3">
-                                                               <!-- <i class="fa fa-user prefix grey-text"></i>
-                                                                <label data-error="wrong" data-success="right" for="form34">Years</label>-->
+                                                            <div class="form-group md-form mb-3">
+                                                               <!-- <i class="fa fa-user prefix grey-text"></i>-->
+                                                                <label data-error="wrong" data-success="right" for="form34">Product</label>
                                                                 <input type="text" id="form34" class="form-control validate" name="code_product" placeholder="Name" value="<?php echo $code_product ?>">
 
                                                             </div>
 
-                                                            <div class="md-form mb-3">
-                                                                <!--<i class="fa fa-envelope prefix grey-text"></i>
-                                                                <label data-error="wrong" data-success="right" for="form29">Product</label>-->
+                                                            <div class="form-group md-form mb-3">
+                                                               <!-- <i class="fa fa-envelope prefix grey-text"></i>-->
+                                                                <label data-error="wrong" data-success="right" for="form29">Description</label>
                                                                 <input type="text" id="form8" class="form-control validate" name="desc_product" placeholder="Email" value="<?php echo $desc_product ?>">
                                                             </div>
 
@@ -163,7 +163,7 @@
                                                             <input type="hidden" id="form8" class="form-control validate" name="id_product" value="<?php echo $id_product ?>">
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center">
-                                                            <button class="btn btn-success">Delete Client</button>
+                                                            <button class="btn btn-success">Delete Product</button>
                                                         </div>
                                                         </form>
                                                     </div>

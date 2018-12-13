@@ -59,7 +59,7 @@ canvas {
   position: top;
   left: 0;
   top: 0;
-  width: 100%;
+  width: 50%;
   height: 200px;
   border-radius: 4px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
@@ -209,14 +209,18 @@ foreach($profile as $p){
                                         </div>
                                         <?php }else{ ?>
                                        <img src="http://cloone.my/demo/Gastron/asset_signature/signature/<?php echo $id_technician ?>.png">
+                                         <a href="<?=site_url('change_signature')?>" class="nav-link text-muted waves-effect waves-dark">        <button type="button" class="btn btn-info button-submit">Change Signature</button></a>
                                         <?php } ?>
+                                       
                                     </div>
                                      
                                    <input type="hidden" name="id_technician" value="<?php echo $id_technician ?>">
+                                     <input type="hidden" name="signature_image" value="<?php echo $p->sign_technician ?>">
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             
-                                            <button type="button" class="btn btn-success button-submit">Update Profile</button>
+                                             
+                                            <button class="btn btn-success button-submit">Update Profile</button>
                                         </div>
                                     </div>
                                 </form>

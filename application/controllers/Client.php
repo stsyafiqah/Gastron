@@ -44,6 +44,7 @@ class Client extends MY_Controller {
      public function insert_client()
     {
     
+        $csr_no = $this->input->post('csr_client');
         $this->Gastron_client->csr_no = $this->input->post('csr_client');
         $this->Gastron_client->name_client = $this->input->post('name_client');
         $this->Gastron_client->email_client = $this->input->post('email_client');
@@ -52,13 +53,22 @@ class Client extends MY_Controller {
         $this->Gastron_client->city_client = $this->input->post('city_client');
         $this->Gastron_client->state_client = $this->input->post('state_client');
         $this->Gastron_client->zip_code_client = $this->input->post('zip_code_client');
-      
-       /* pre($_POST);
-         die();*/
+        
+       	$q = $this->Gastron_client->listing_client($csr_no);
+       
+         if(count($q) == 0){
          
-		$q = $this->Gastron_client->insert_client();
+		$s = $this->Gastron_client->insert_client();
+              redirect('client');
+         }else
+         {
+            echo "<script>
+            alert('csr no already exist, please insert new csr no !');
+            window.location.href='client';
+            </script>";
+         }
 
-        redirect('client');
+       
 
         
     }

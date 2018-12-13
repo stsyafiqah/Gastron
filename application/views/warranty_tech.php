@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
                        
-                        <button type="button" class="btn pull-right btn-success btn_add" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"> Add New Warranty</i></button>
+                        <!--<button type="button" class="btn pull-right btn-success btn_add" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"> Add New Warranty</i></button>-->
                     </div>
                 </div>
                 
@@ -147,7 +147,7 @@
                             <tr>
 								<td colspan="2"><div class="md-form mb-3">
                                     <!--<i class="fa fa-pencil prefix grey-text"></i>-->
-                                     <label data-error="wrong" data-success="right" for="form8">Start Service Date : </label>
+                                     <label data-error="wrong" data-success="right" for="form8">Start Warranty Date : </label>
                                     <input type="date" id="date_picker" class="form-control" name="war_start_date" placeholder="Next Service Date">
                                    
                                 </div>
@@ -216,7 +216,7 @@
                 
                 <!-- Row -->
                 <div class="row">
-                   <div class="col-sm-12">
+                   <div class="col-sm-18">
                         <div class="card">
                             <div class="card-block">
                                <!-- <h4 class="card-title">Basic Table</h4>
@@ -225,15 +225,15 @@
                                    <table width="100%" class="table table-bordered table-hover" id="dataTables">
                                         <thead>
                                             <tr>
-                                                <th width="5%">Csr No</th>
-                                                <th>Years</th>
+                                                <th width="5%">Doc</th>
                                                 <th>Client</th>
                                                 <th>Location</th>
                                                 <th>Product</th>
                                                 <th>Model</th>
+                                                <th>Year</th>
+                                                <th>Start Warranty Date</th>
                                                 <th>Technician</th>
                                                 <th>Next Service Date</th>
-                                                <th>Doc Warranty</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -255,15 +255,16 @@
                                              
                                               ?>
                                             <tr>
-                                                <td><?php echo $aw->csr_no?></td>
-                                                <td><?php echo $year_warranty?></td>
+                                                <td><a href="<?=site_url('limited/generate_pdf?id='.$id_warranty)?>" title="warranty" ><i class="fa fa-eye"></i></a></td>
                                                 <td><?php echo $name_client?></td>
                                                 <td><?php echo $location_warranty?></td>
                                                 <td><?php echo $code_product?></td>
                                                 <td><?php echo $aw->code_model?></td>
-                                                <td><?php echo $name_technician?></td>
+                                                <td><?php echo $year_warranty?></td>
                                                 <td><?php echo date("d/m/Y ", strtotime($aw->start_date_warranty)) ?></td>
-                                                <td><a href="<?=site_url('limited/generate_pdf?id='.$id_warranty)?>" title="warranty" ><i class="fa fa-eye"></i></a></td>
+                                                <td><?php echo $name_technician?></td>
+                                                <td><?php echo date("d/m/Y ", strtotime($aw->next_service_warranty)) ?></td>
+                                                
                                             </tr>
                                             <?php } ?>
                                         </tbody>

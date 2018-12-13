@@ -115,7 +115,7 @@
                 
                 <!-- Row -->
                 <div class="row">
-                   <div class="col-sm-12">
+                   <div class="col-sm-18">
                         <div class="card">
                             <div class="card-block">
                                <!-- <h4 class="card-title">Basic Table</h4>
@@ -171,53 +171,53 @@
                                                             </button>
                                                         </div>
                                                          <form id="wizard-clickable" class="frm_wizard frm_wizard_check" method="POST" action="<?=site_url('update_client?id='.$id_client)?>" enctype="multipart/form-data"  novalidate>
-                                                        <div class="modal-body mx-10">
-                                                            <div class="md-form md-6">
+                                                        <div class="modal-body mx-3">
+                                                           <div class="form-group md-form mb-3">
                                                                <!-- <i class="fa fa-user prefix grey-text"></i>-->
-                                                                <label data-error="wrong" data-success="right" for="form34">Csr No</label>
+                                                                <label data-error="wrong" data-success="right" for="form34">Csr No :</label>
                                                                 <input type="text" id="form34" class="form-control validate" name="csr_client" placeholder="Csr No" value="<?php echo $ac->csr_no ?>">
 
                                                             </div>
-                                                            <div class="md-form mb-3">
+                                                            <div class="form-group md-form mb-3">
                                                                <!-- <i class="fa fa-user prefix grey-text"></i>-->
                                                                 <label data-error="wrong" data-success="right" for="form34">Name : </label>
                                                                 <input type="text" id="form34" class="form-control validate" name="name_client" placeholder="Name" value="<?php echo $name_client ?>">
 
                                                             </div>
 
-                                                            <div class="md-form mb-3">
+                                                            <div class="form-group md-form mb-3">
                                                                 <!--<i class="fa fa-envelope prefix grey-text"></i>-->
                                                                 <label data-error="wrong" data-success="right" for="form29">Email : </label>
                                                                 <input type="email" id="form8" class="form-control validate" name="email_client" placeholder="Email" value="<?php echo $email_client ?>">
                                                             </div>
 
-                                                            <div class="md-form mb-3">
+                                                            <div class="form-group md-form mb-3">
                                                                 <!--<i class="fa fa-tag prefix grey-text"></i>-->
                                                                  <label data-error="wrong" data-success="right" for="form32">Phone : </label>
                                                                 <input type="text" id="form8" class="form-control validate" name="phone_client" placeholder="Phone" value="<?php echo $phone_client ?>">
                                                             </div>
                                                             
-                                                             <div class="md-form mb-3">
+                                                             <div class="form-group md-form mb-3">
                                                                 <!--<i class="fa fa-tag prefix grey-text"></i>-->
                                                                  <label data-error="wrong" data-success="right" for="form32">Address : </label>
                                                                 <input type="text" id="form8" class="form-control validate" name="address_client" placeholder="Phone" value="<?php echo $address_client ?>">
                                                             </div>
                                                             
-                                                             <div class="md-form mb-3">
+                                                             <div class="form-group md-form mb-3">
                                                                 <!--<i class="fa fa-tag prefix grey-text"></i>-->
                                                                  <label data-error="wrong" data-success="right" for="form32">City : </label>
                                                                 <input type="text" id="form8" class="form-control validate" name="city_client" placeholder="City" value="<?php echo $city_client ?>">
                                                             </div>
                                                             
-                                                             <div class="md-form mb-3">
+                                                             <div class="form-group md-form mb-3">
                                                                 <!--<i class="fa fa-tag prefix grey-text"></i>-->
                                                                  <label data-error="wrong" data-success="right" for="form32">State : </label>
                                                                 <input type="text" id="form8" class="form-control validate" name="state_client" placeholder="State" value="<?php echo $state_client ?>">
                                                             </div>
                                                             
-                                                             <div class="md-form mb-3">
+                                                             <div class="form-group md-form mb-3">
                                                                 <!--<i class="fa fa-tag prefix grey-text"></i>-->
-                                                                 <label data-error="wrong" data-success="right" for="form32">Zip Code</label>
+                                                                 <label data-error="wrong" data-success="right" for="form32">Zip Code :</label>
                                                                 <input type="text" id="form8" class="form-control validate" name="zip_code_client" placeholder="Zip Code" value="<?php echo $zip_code_client ?>">
                                                             </div>
                                                             <input type="hidden" id="form8" class="form-control validate" name="id_client" value="<?php echo $id_client ?>">

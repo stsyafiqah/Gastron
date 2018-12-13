@@ -17,12 +17,13 @@ class Pdf3 extends TCPDF
 
 
 		$this->SetFont('helvetica', 'B', 10);
-		 
-        $this->Cell(0, 20, 'GASTRONICS (Malaysia) SDN BHD', 0, false, 'C', 0, '', 0, false, 'T', 'M');
-		$this->Cell(0, 30, '6 Jalan PJU 1A/13, Taman Perindustrian Jaya, Ara Damansara,47200 Petaling Jaya, Selangor, Malaysia ', 0, false, 'R', 0, '', 0, false, 'T', 'M');
-        $this->Cell(0, 40, 'Tel: 03-7840 0199 Fax: 03-7840 0411 / Email:malaysia@gastron.com', 0, true, 'R', 0, '', 0, false, 'T', 'C');
-        //$this->Cell(0, 40, '', 0, true, 'R', 0, '', 0, true, 'T', 'C');
-      
+		
+        $this->Ln(10);        
+        $this->Cell(0, 15, 'GASTRONICS (Malaysia) SDN BHD', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Ln(5);        
+        $this->Cell(0, 0, '6 Jalan PJU 1A/13, Taman Perindustrian Jaya, Ara Damansara,47200 Petaling Jaya, Selangor, Malaysia', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Ln(5);        
+        $this->Cell(0, 0, 'Tel: 03-7840 0199 Fax: 03-7840 0411 / Email:malaysia@gastron.com', 0, false, 'C', 0, '', 0, false, 'M', 'M');
     }
 	// Page footer
 	public function Footer() {

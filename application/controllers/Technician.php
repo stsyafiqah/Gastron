@@ -161,10 +161,10 @@ window.location.href='change_password';
         $signature_image_temp = explode(",", $sign_value);
         if ( !empty($signature_image_temp[1]) )
         {
-        /*if (!file_exists(storage_path('app/public').'/signature/'.$sales_id))
+        if (!file_exists(storage_path('app/public').'/signature/'.$sales_id))
         {
         mkdir(storage_path('app/public').'/signature/'.$sales_id, 0777, true);
-        }*/
+        }
 
         $signature_image = base64_decode($signature_image_temp[1]);
         //$filename = 'signature_purchaser_'.$key;

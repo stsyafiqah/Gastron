@@ -188,10 +188,13 @@ class Domestic extends MY_Controller
         $this->Gastron_domestic->test_gas = $this->input->post('test_gas');
         $this->Gastron_domestic->alarm_response_time = $this->input->post('alarm_response');
         $this->Gastron_domestic->alarm_signal_output = $this->input->post('alarm_signal');
-        $this->Gastron_domestic->power_test = $this->input->post('power_test');        
+        $this->Gastron_domestic->power_test = $this->input->post('power_test'); 
+         //$this->Gastron_warranty->serial_no_warranty	 = $this->input->post('serial_num_portable');
+        $this->Gastron_warranty->last_service_warranty = $this->input->post('last_service');
+        $this->Gastron_warranty->next_service_warranty = $this->input->post('next_service');
         
         $q = $this->Gastron_domestic->insert_domestic();
-        $q = $this->Gastron_warranty->update_status($id);
+        $q = $this->Gastron_warranty->update_domestic($id);
 
         redirect('services');
 

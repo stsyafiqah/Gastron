@@ -16,10 +16,16 @@ class Pdf2 extends TCPDF
 		// Set font
 		$this->SetFont('helvetica', 'B', 10);
 		 
-		$this->Cell(-10, 20, '6 Jalan PJU 1A/13, Taman Perindustrian Jaya, Ara Damansara,', 0, false, 'R', 0, '', 0, false, 'T', 'M');
-          $this->Cell(-10, 30, '47200 Petaling Jaya, Selangor, Malaysia ', 0, false, 'R', 0, '', 0, false, 'T', 'M');
-        $this->Cell(-10, 40, 'Tel: 03-7840 0199 Fax: 03-7840 0411', 0, false, 'R', 0, '', 0, false, 'T', 'M');
+		/*$this->Cell(-10, 20, '6 Jalan PJU 1A/13, Taman Perindustrian Jaya, Ara Damansara,', 0, false, 'R', 0, '', 0, false, 'T', 'M');
+        $this->Cell(-10, 30, '47200 Petaling Jaya, Selangor, Malaysia ', 0, false, 'R', 0, '', 0, false, 'T', 'M');
+        $this->Cell(-10, 40, 'Tel: 03-7840 0199 Fax: 03-7840 0411', 0, false, 'R', 0, '', 0, false, 'T', 'M');*/
       
+         $this->Ln(10);        
+        $this->Cell(250, 15, '6 Jalan PJU 1A/13, Taman Perindustrian Jaya, Ara Damansara', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Ln(5);        
+        $this->Cell(250, 0, '47200 Petaling Jaya, Selangor, Malaysia', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Ln(5);        
+        $this->Cell(250, 0, 'Tel: 03-7840 0199 Fax: 03-7840 0411', 0, false, 'C', 0, '', 0, false, 'M', 'M');
     }
 	// Page footer
 	public function Footer() {

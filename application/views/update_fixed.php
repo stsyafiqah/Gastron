@@ -22,6 +22,7 @@ foreach($listing_fixed as $f)
     $two_alarm = $f->two_alarm;
     $three_alarm = $f->three_alarm;
     $sensor_grade = $f->sensor_grade;
+    $remarks = $f->remark;
     
      $sensor_dates = json_decode($sensor_date,TRUE);
      $serial_no = json_decode($serial,TRUE);
@@ -39,7 +40,9 @@ foreach($listing_fixed as $f)
      $two_alarms = json_decode($two_alarm,TRUE);
      $three_alarms = json_decode($three_alarm,TRUE);
      $sensor_grades = json_decode($sensor_grade,TRUE);
-    
+    $remarks_tech = json_decode($remarks,TRUE);
+    $ser_count = count($serial_no);
+    ;
     
     
     //$ser_count = count($serial_no);
@@ -48,7 +51,7 @@ foreach($listing_fixed as $f)
 			
         $a = '';
         $count_pc = 1;    
-		for ( $x = 0; $x < $total_product_component; $x++ )
+		for ( $x = 0; $x < $ser_count; $x++ )
 		{
 		    $sensor                 = ( isset( $sensor_dates[$x] ) ? $sensor_dates[$x] : "" );
             $serial_no_warranty     = ( isset( $serial_no[$x] ) ? $serial_no[$x] : "" );
@@ -68,40 +71,85 @@ foreach($listing_fixed as $f)
             $senr_grades            = ( isset( $sensor_grades[$x] ) ? $sensor_grades[$x] : "" );
             
               $a .= '<tr>
-                <td style="">'.$count_pc.'</td>
-                <td style=""><input type="date" id="form34" class="form-control validate" name="sensor_date[]" value="'.$sensor.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="detector_serial_no[]" value="'.$serial_no_warranty.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="bat_voltage[]" value="'.$batt.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="detector[]" value="'.$det.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="receiver[]" value="'.$rec.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="cal_gas[]" value="'.$cal.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="density_lel[]" value="'.$density.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="full_range[]" value="'.$full.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="before_zero[]" value="'.$bef_zeros.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="after_zero[]" value="'.$aft_zeros.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="before_span[]" value="'.$bef_spans.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="after_span[]" value="'.$aft_spans.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="1st_alarm[]" value="'.$o_alarms.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="2nd_alarm[]" value="'.$t_alarms.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="3rd_alarm[]" value="'.$th_alarms.'"></td>
-                <td style=""><input type="text" id="form34" class="form-control validate" name="sensor_grade[]" value="'.$senr_grades.'"></td>
+                <td style="" align="center"> '.$count_pc.'</td>
+                <td style="" align="center"><input type="date" id="form34" class="form-control validate" name="sensor_date[]" value="'.$sensor.'" style="width: 200px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="detector_serial_no[]" value="'.$serial_no_warranty.'" style="width: 150px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="bat_voltage[]" value="'.$batt.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="detector[]" value="'.$det.'" style="width: 150px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="receiver[]" value="'.$rec.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="cal_gas[]" value="'.$cal.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="density_lel[]" value="'.$density.'" style="width: 100px;"></td>
+                <td style=""><input type="text" id="form34" class="form-control validate" name="full_range[]" value="'.$full.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="before_zero[]" value="'.$bef_zeros.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="after_zero[]" value="'.$aft_zeros.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="before_span[]" value="'.$bef_spans.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="after_span[]" value="'.$aft_spans.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="1st_alarm[]" value="'.$o_alarms.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="2nd_alarm[]" value="'.$t_alarms.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="3rd_alarm[]" value="'.$th_alarms.'" style="width: 100px;"></td>
+                <td style="" align="center"><input type="text" id="form34" class="form-control validate" name="sensor_grade[]" value="'.$senr_grades.'" style="width: 100px;"></td>
          
            </tr> ';
               $count_pc++; 
-        }       
+        }      
+    
+    $b = '';
+        //$count_pc = 1;    
+		for ( $x = 0; $x < 6; $x++ )
+		{
+		     $remarks_technician     = ( isset( $remarks_tech[$x] ) ? $remarks_tech[$x] : "" );
+             /* $pro_desc     = ( isset( $product_component[$x]['component_desc'] ) ? $product_component[$x]['component_desc'] : "" );
+              $pro_qty	    = ( isset( $product_component[$x]['component_qty'] ) ? $product_component[$x]['component_qty'] : "" );
+              $pro_unit	    = ( isset( $product_component[$x]['component_unitcost'] ) ? $product_component[$x]['component_unitcost'] : "" );
+              $pro_amount	= ( isset( $product_component[$x]['component_amount'] ) ? $product_component[$x]['component_amount'] : "" );*/
+            
+              $b .= '
+               <tr><td style="width:100%;height:50px" colspan="17"><input type="text" id="form34" class="form-control validate" name="remark[]" value="'.$remarks_technician.'"></td></tr>';
+              //$count_pc++; 
+        }   
 }
 ?>
 
 
+
 <style>
 
-    /*tbody tr:hover { background: red; }
-    td a { 
-    display: block; 
-    border: 1px solid black;
-    padding: 16px; 
+    input[type=text] {
+    background-color: lightgray;
+    color: black;
+    border-bottom: 1px solid #000000;
+    }
+    input[value] {
+    background: lightgoldenrodyellow;
+    border-bottom: 1px solid #000000;
+    color: black;
+    }
+    
+    input[value][type=date]{
+    background-color: lightgoldenrodyellow;
+    border-bottom: 1px solid #000000;
+    color: black;
+    }
+    
+    input[type=date] {
+    background: lightgray;
+    color: black;
+    border-bottom: 1px solid #000000;
+    }
+    
+    input[readonly]  {
+    background: grey;
+    border: none;
+    color: black;
+    }
+    
+  /*  td  {
+    background: #E0E0E0;
+    border: 1px solid #000000;
+    color: black;
     }*/
-
+    
+    
 </style>
 <!-- ============================================================== -->
 <!-- Container fluid  -->
@@ -146,33 +194,33 @@ foreach($listing_fixed as $f)
          </tr>
           <tr>
                 <td style="width:10%">CSR NO. </td>
-                <td style="width:40%" colspan="10"><?php echo $f->csr_no ?></td>
+                <td style="width:40%" colspan="10"><input type="text" id="form34" class="form-control validate" name="cal_date" value="<?php echo $f->csr_no ?>" readonly></td>
                 <td style="width:10%" colspan="2">CAL.DATE</td>
                 <td style="width:40%" colspan="4"><input type="date" id="form34" class="form-control validate" name="cal_date" value="<?php echo $f->cal_date ?>"></td>
          </tr>
          
           <tr>
                 <td style="width:20%" colspan="2">CUSTOMER NAME </td>
-                <td style="width:30%" colspan="9"><?php echo $f->name_client ?></td>
+                <td style="width:30%" colspan="9"><input type="text" id="form34" class="form-control validate" name="cal_date" value="<?php echo $f->name_client ?>" readonly></td>
                 <td style="width:20%" colspan="2">DUE DATE</td>
                 <td style="width:30%" colspan="4"><input type="date" id="form34" class="form-control validate" name="due_date" value="<?php echo $f->due_date ?>"></td>
          </tr>
          
          <tr>
                 <td style="width:10%">Address </td>
-                <td style="width:90%" colspan="16"><?php echo $f->address_client ?></td>
+                <td style="width:90%" colspan="16"><input type="text" id="form34" class="form-control validate" name="cal_date" value="<?php echo $f->address_client ?>" readonly></td>
                 
          </tr>
          
            <tr>
                 <td style="width:10%">City </td>
-                <td style="width:15%" colspan="2"><?php echo $f->city_client ?></td>
+                <td style="width:15%" colspan="2"><input type="text" id="form34" class="form-control validate" name="cal_date" value="<?php echo $f->city_client ?>" readonly></td>
                 <td style="width:10%">State</td>
-                <td style="width:20%" colspan="4"><?php echo $f->state_client ?></td>
+                <td style="width:20%" colspan="4"><input type="text" id="form34" class="form-control validate" name="cal_date" value="<?php echo $f->state_client ?>" readonly></td>
                 <td style="width:10%">Zip Code </td>
-                <td style="width:10%" colspan="4"><?php echo $f->zip_code_client ?></td>
+                <td style="width:10%" colspan="4"><input type="text" id="form34" class="form-control validate" name="cal_date" value="<?php echo $f->zip_code_client ?>" readonly></td>
                 <td style="width:10%">Tel</td>
-                <td style="width:15%" colspan="3"><?php echo $f->phone_client ?></td>
+                <td style="width:15%" colspan="3"><input type="text" id="form34" class="form-control validate" name="cal_date" value="<?php echo $f->phone_client ?>" readonly></td>
          </tr>
           <tr>
                 <td style="width:40%" colspan="6" rowspan="2">Status of Call: RP, OTS, MS, CP or Others</td>
@@ -249,9 +297,10 @@ foreach($listing_fixed as $f)
                 
          <tr>
                 
-                <td style="width:100%;height:50px" colspan="17">*Remark :<input type="text" id="form34" class="form-control validate" name="remark" value="<?php echo $f->remark ?>"></td>
+             <td style="width:100%;height:50px" colspan="17">*Remark :<input type="text" id="form34" class="form-control validate" name="remark" value="<?php echo $f->remark ?>"></td>
                 
          </tr>
+                                    
          
           <tr>
                 <td style="width:70%" colspan="10" rowspan="2">* SENSOR GRADE DIVISION <br>A GRADE : Best condition of sensitibity<br>B GRADE : Need to do sensitiVity adjustment and management <br>C GRADE : Sensor hunting or faulty will be expected,because of low sensitibity,sensor replacement required on next service <br>D GRADE: Measurment is not possible,need to replace sensor immediately</td>
@@ -267,6 +316,19 @@ foreach($listing_fixed as $f)
          </tr>
          
          </table>
+                                    <br><br>
+                                    
+                                    <table id ="1" cellspacing="1" cellpadding="1" border="1">
+                                <tr>
+                                <td style="width:40%;height:50px" align="centre">Last Service Date</td>
+                                <td style="width:40%;height:50px" align="centre">Next Service Date</td>
+                                </tr>
+                                <tr>
+                                <td style="width:40%;height:50px" align="centre"><input type="date" class="form-control validate" name="last_service" value="<?php echo $f->last_service_warranty ?>"></td>
+                                <td style="width:40%;height:50px" align="centre"><input type="date" class="form-control validate" name="next_service" value="<?php echo $f->next_service_warranty ?>"></td>
+                                </tr>
+                            </table>
+                                    <br><br>
                         </div>
                         <input type="hidden" id="form34" class="form-control validate" name="idw_fixed" value="<?php echo $f->id_warranty ?>" placeholder="Years">
 

@@ -93,6 +93,7 @@ $route['select_model'] 		  = 'warranty/select_model';
 $route['portable'] 		  = 'warranty/services_portable';
 $route['domestic'] 		  = 'warranty/services_domestic';
 $route['fixed'] 		  = 'warranty/services_fixed';
+//$route['send_email'] 		  = 'warranty/send_email';
 
 
 /*=====================================================================
